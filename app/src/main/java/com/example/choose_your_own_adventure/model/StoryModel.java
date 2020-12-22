@@ -6,13 +6,13 @@ import java.util.ArrayList;
 public class StoryModel {
 
     private int storyBoard = 0;
-    public void button1Pushed(){}
+    public void button1Pushed(){getNextStory();}
 
-    public void button2Pushed(){}
+    public void button2Pushed(){getNextStory();}
 
-    public void button3Pushed(){}
+    public void button3Pushed(){getNextStory();}
 
-    public void button4Pushed(){}
+    public void button4Pushed(){getNextStory();}
 
     public StoryPiece getNextStory(){
 
