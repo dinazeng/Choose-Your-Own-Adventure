@@ -1,4 +1,4 @@
-package com.example.choose_your_own_adventure;
+package com.qbielka.dinazeng.choose_your_own_adventure;
 
 import org.junit.Test;
 
