@@ -1,4 +1,4 @@
-package com.example.choose_your_own_adventure.model;
+package com.qbielka.dinazeng.choose_your_own_adventure.model;
 
 import com.google.gson.Gson;
 

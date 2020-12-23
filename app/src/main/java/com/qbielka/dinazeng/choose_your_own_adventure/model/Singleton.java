@@ -1,4 +1,4 @@
-package com.example.choose_your_own_adventure.model;
+package com.qbielka.dinazeng.choose_your_own_adventure.model;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
