@@ -1,10 +1,12 @@
-package com.example.choose_your_own_adventure;
+package com.qbielka.dinazeng.choose_your_own_adventure.UI;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
+
+import com.qbielka.dinazeng.choose_your_own_adventure.R;
 
 public class GameActivity extends AppCompatActivity {
 
