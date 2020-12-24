@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Choose-Your-Own-Adventure</string>
+    <string name="start">START</string>
+    <string name="statistics">STATISTICS</string>
+    <string name="settings">SETTINGS</string>
+    <string name="teamname">teamName</string>
 </resources>
