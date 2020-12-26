@@ -47,6 +47,13 @@
                 android:layout_gravity="center"
                 android:layout_height="wrap_content"
                 android:text="@string/settings"/>
+
+            <Button
+                android:id="@+id/menu_about"
+                android:layout_width="150dp"
+                android:layout_gravity="center"
+                android:layout_height="wrap_content"
+                android:text="ABOUT" />
         </LinearLayout>
 
         <TextView
