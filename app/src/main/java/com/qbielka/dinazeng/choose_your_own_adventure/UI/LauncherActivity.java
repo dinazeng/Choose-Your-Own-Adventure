@@ -7,14 +7,18 @@ import android.content.res.Resources;
 import android.os.Bundle;
 
 import com.qbielka.dinazeng.choose_your_own_adventure.R;
+import com.qbielka.dinazeng.choose_your_own_adventure.databaseObjects.Story;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 
+import java.util.ArrayList;
+
 public class LauncherActivity extends AppCompatActivity {
 
+    ArrayList <Story> storyArray;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,7 +48,7 @@ public class LauncherActivity extends AppCompatActivity {
     }
 
     private void addLineToDatabase(String line) {
-        //todo this
+        storyArray.add(new Story (line));
     }
 
 
