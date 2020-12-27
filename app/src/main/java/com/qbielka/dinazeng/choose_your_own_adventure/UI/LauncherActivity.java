@@ -31,7 +31,7 @@ public class LauncherActivity extends AppCompatActivity {
 
     private void todo() throws IOException {
         final Resources resources =  getResources();
-        InputStream inputStream = resources.openRawResource(R.raw.StoryInput);
+        InputStream inputStream = resources.openRawResource(R.raw.story_input);
         BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
         try {
             String line;
