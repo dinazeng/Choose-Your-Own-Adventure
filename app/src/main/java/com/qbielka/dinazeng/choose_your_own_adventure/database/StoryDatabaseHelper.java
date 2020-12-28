@@ -57,4 +57,16 @@ public class StoryDatabaseHelper extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS "+TABLE_NAME);
         onCreate(db);
     }
+
+
+    public Story querry(String querry){
+        String[] allcols = {COL_1, COL_2, COL_3, COL_4, COL_5, COL_6, COL_7, COL_8, COL_9, COL_10, COL_11, };
+//        db.query(TABLE_NAME, allcols,)
+        return new Story();
+    }
+
+
+    public void insert(Story storyLine){
+
+    }
 }
