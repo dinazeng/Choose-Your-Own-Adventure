@@ -6,6 +6,8 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import androidx.annotation.Nullable;
 
+import com.qbielka.dinazeng.choose_your_own_adventure.databaseObjects.Story;
+
 public class StoryDatabaseHelper extends SQLiteOpenHelper {
     public static final String DATABASE_NAME = "Story.db";
     public static final String TABLE_NAME = "story_table";
@@ -24,8 +26,11 @@ public class StoryDatabaseHelper extends SQLiteOpenHelper {
     public static final String COL_10 = "BUTTON_3_KEY";
     public static final String COL_11 = "BUTTON_4_KEY";
 
+    private SQLiteDatabase db;
+
     public StoryDatabaseHelper(@Nullable Context context) {
         super(context, DATABASE_NAME, null, 1);
+        db = this.getWritableDatabase();
     }
 
     @Override
@@ -42,13 +47,14 @@ public class StoryDatabaseHelper extends SQLiteOpenHelper {
                 COL_9 + " INTEGER, " +
                 COL_10+ " INTEGER, " +
                 COL_11+ " INTEGER" +
-                ");";
+                ")";
 
         db.execSQL(createTable);
     }
 
     @Override
-    public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
-
+    public void onUpgrade(SQLiteDatabase db, int i, int i1) {
+        db.execSQL("DROP TABLE IF EXISTS "+TABLE_NAME);
+        onCreate(db);
     }
 }
