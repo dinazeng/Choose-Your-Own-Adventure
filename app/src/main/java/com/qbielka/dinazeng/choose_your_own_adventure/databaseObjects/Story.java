@@ -1,5 +1,7 @@
 package com.qbielka.dinazeng.choose_your_own_adventure.databaseObjects;
 
+import java.util.ArrayList;
+
 public class Story {
 
     static int nextID = 1;
@@ -24,26 +26,26 @@ public class Story {
     public Story(String story){
         //todo fix this so it sets all values of  class.
 
-        //todo fix this because its so wrong.
-        id = Integer.valueOf(story.charAt(0));
-
-        story = story.substring(story.indexOf(',') + 1);
-        this.story = story.substring(0, story.indexOf(','));
-        story = story.substring(story.indexOf(',') + 1);
-
-        numButtons = Integer.valueOf(story.charAt(0));
-        story = story.substring(story.indexOf(',') + 1);
-
-        button1Text = story.substring(0, story.indexOf(','));
-        story = story.substring(story.indexOf(',') + 1);
-        button2Text = story.substring(0, story.indexOf(','));
-        story = story.substring(story.indexOf(',') + 1);
-        button3Text = story.substring(0, story.indexOf(','));
-        story = story.substring(story.indexOf(',') + 1);
-
-        button1NextState = Integer.valueOf(story.charAt(0));
-        button2NextState = Integer.valueOf(story.charAt(2));
-        button3NextState = Integer.valueOf(story.charAt(4));
+        //todo talk to Dina about code flexibility
+//        id = Integer.valueOf(story.charAt(0));
+//
+//        story = story.substring(story.indexOf(',') + 1);
+//        this.story = story.substring(0, story.indexOf(','));
+//        story = story.substring(story.indexOf(',') + 1);
+//
+//        numButtons = Integer.valueOf(story.charAt(0));
+//        story = story.substring(story.indexOf(',') + 1);
+//
+//        button1Text = story.substring(0, story.indexOf(','));
+//        story = story.substring(story.indexOf(',') + 1);
+//        button2Text = story.substring(0, story.indexOf(','));
+//        story = story.substring(story.indexOf(',') + 1);
+//        button3Text = story.substring(0, story.indexOf(','));
+//        story = story.substring(story.indexOf(',') + 1);
+//
+//        button1NextState = Integer.valueOf(story.charAt(0));
+//        button2NextState = Integer.valueOf(story.charAt(2));
+//        button3NextState = Integer.valueOf(story.charAt(4));
     }
 
     public int getId() {
