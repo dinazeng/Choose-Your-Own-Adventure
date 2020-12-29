@@ -18,8 +18,8 @@ public class Story {
     private String button3Text;
     private int button3NextState;
 
-    //private String button4Text;
-    //private int button4NextState;
+    private String button4Text;
+    private int button4NextState;
 
     public Story(String story){
         //todo fix this so it sets all values of  class.
@@ -46,68 +46,20 @@ public class Story {
         button3NextState = Integer.valueOf(story.charAt(4));
     }
 
-    public String getStory (){
-        return story;
-    }
-
-    public void setStory (String story){
-        this.story = story;
-    }
-
-    public String getButton1(){
-        return button1Text;
-    }
-
-    public int getValueButton1(){
-        return button1NextState;
-    }
-
-    public String getButton2(){
-        return button2Text;
-    }
-
-    public int getValueButton2(){
-        return button2NextState;
-    }
-
-    public String getButton3(){
-        return button3Text;
-    }
-
-    public int getValueButton3(){
-        return button3NextState;
-    }
-
-    public void setButton1(String button1Text){
-        this.button1Text = button1Text;
-    }
-
-    public void setValueButton1(int valueButton1){
-        button1NextState = valueButton1;
-    }
-
-    public void setButton2(String button2Text){
-        this.button2Text = button2Text;
-    }
-
-    public void setValueButton2(int valueButton2){
-        button2NextState = valueButton2;
-    }
-
-    public void setButton3(String button3Text){
-        this.button3Text = button3Text;
-    }
-
-    public void setValueButton3(int valueButton3){
-        button3NextState = valueButton3;
-    }
-
     public int getId() {
         return id;
     }
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public String getStory() {
+        return story;
+    }
+
+    public void setStory(String story) {
+        this.story = story;
     }
 
     public int getNumButtons() {
@@ -166,11 +118,21 @@ public class Story {
         this.button3NextState = button3NextState;
     }
 
-
-
-    private void setID(){
-        id = nextID;
-        nextID++;
+    public String getButton4Text() {
+        return button4Text;
     }
+
+    public void setButton4Text(String button4Text) {
+        this.button4Text = button4Text;
+    }
+
+    public int getButton4NextState() {
+        return button4NextState;
+    }
+
+    public void setButton4NextState(int button4NextState) {
+        this.button4NextState = button4NextState;
+    }
+
 }
 
