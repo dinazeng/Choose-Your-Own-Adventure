@@ -7,6 +7,7 @@ import android.content.res.Resources;
 import android.os.Bundle;
 
 import com.qbielka.dinazeng.choose_your_own_adventure.R;
+import com.qbielka.dinazeng.choose_your_own_adventure.database.StoryDatabaseHelper;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -15,11 +16,15 @@ import java.io.InputStreamReader;
 
 public class LauncherActivity extends AppCompatActivity {
 
+    StoryDatabaseHelper db;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_launcher);
         Intent intent = new Intent(getApplicationContext(), MenuActivity.class);
+
+        db = new StoryDatabaseHelper(this);
         try {
             todo();
         } catch (IOException e){
