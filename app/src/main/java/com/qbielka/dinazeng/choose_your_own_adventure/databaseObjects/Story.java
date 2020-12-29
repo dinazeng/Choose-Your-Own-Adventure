@@ -4,6 +4,7 @@ public class Story {
 
     static int nextID = 1;
 
+
     int id;
     private String story;
     private int numButtons;
@@ -21,6 +22,9 @@ public class Story {
     //private int button4NextState;
 
     public Story(String story){
+        //todo fix this so it sets all values of  class.
+
+        //todo fix this because its so wrong.
         id = Integer.valueOf(story.charAt(0));
 
         story = story.substring(story.indexOf(',') + 1);
@@ -97,6 +101,72 @@ public class Story {
     public void setValueButton3(int valueButton3){
         button3NextState = valueButton3;
     }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public int getNumButtons() {
+        return numButtons;
+    }
+
+    public void setNumButtons(int numButtons) {
+        this.numButtons = numButtons;
+    }
+
+    public String getButton1Text() {
+        return button1Text;
+    }
+
+    public void setButton1Text(String button1Text) {
+        this.button1Text = button1Text;
+    }
+
+    public int getButton1NextState() {
+        return button1NextState;
+    }
+
+    public void setButton1NextState(int button1NextState) {
+        this.button1NextState = button1NextState;
+    }
+
+    public String getButton2Text() {
+        return button2Text;
+    }
+
+    public void setButton2Text(String button2Text) {
+        this.button2Text = button2Text;
+    }
+
+    public int getButton2NextState() {
+        return button2NextState;
+    }
+
+    public void setButton2NextState(int button2NextState) {
+        this.button2NextState = button2NextState;
+    }
+
+    public String getButton3Text() {
+        return button3Text;
+    }
+
+    public void setButton3Text(String button3Text) {
+        this.button3Text = button3Text;
+    }
+
+    public int getButton3NextState() {
+        return button3NextState;
+    }
+
+    public void setButton3NextState(int button3NextState) {
+        this.button3NextState = button3NextState;
+    }
+
+
 
     private void setID(){
         id = nextID;
