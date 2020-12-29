@@ -1,5 +1,6 @@
 package com.qbielka.dinazeng.choose_your_own_adventure.database;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
@@ -62,11 +63,26 @@ public class StoryDatabaseHelper extends SQLiteOpenHelper {
     public Story querry(String querry){
         String[] allcols = {COL_1, COL_2, COL_3, COL_4, COL_5, COL_6, COL_7, COL_8, COL_9, COL_10, COL_11, };
 //        db.query(TABLE_NAME, allcols,)
-        return new Story();
+        return new Story("TODO");
     }
 
 
-    public void insert(Story storyLine){
+    public boolean insert(Story storyLine){
+        ContentValues cv = new ContentValues();
+        cv.put(COL_1, storyLine.getId());
+        cv.put(COL_2, storyLine.getStory());
+        cv.put(COL_3, storyLine.getNumButtons());
+        cv.put(COL_4, storyLine.getButton1Text());
+        cv.put(COL_5, storyLine.getButton2Text());
+        cv.put(COL_6, storyLine.getButton3Text());
+        cv.put(COL_7, storyLine.getButton4Text());
+        cv.put(COL_8, storyLine.getButton1NextState());
+        cv.put(COL_9, storyLine.getButton2NextState());
+        cv.put(COL_10, storyLine.getButton3NextState());
+        cv.put(COL_11, storyLine.getButton4NextState());
 
+        long result = db.insert(TABLE_NAME, null, cv);
+
+        return result != -1;
     }
 }
