@@ -7,6 +7,7 @@ import android.content.res.Resources;
 import android.os.Bundle;
 
 import com.qbielka.dinazeng.choose_your_own_adventure.R;
+import com.qbielka.dinazeng.choose_your_own_adventure.database.StoryDatabaseHelper;
 import com.qbielka.dinazeng.choose_your_own_adventure.databaseObjects.Story;
 
 import java.io.BufferedReader;
