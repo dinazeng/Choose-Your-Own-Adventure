@@ -4,9 +4,6 @@ import java.util.ArrayList;
 
 public class Story {
 
-    static int nextID = 1;
-
-
     int id;
     private String story;
     private int numButtons;
@@ -30,6 +27,7 @@ public class Story {
         story = columns.get(1);
         numButtons = Integer.parseInt(columns.get(2));
 
+        //Todo replace this with an array of objects that will be read in and out of the database
         int b1Position = 3;
         int b2Position = 4;
         int b3Position = 5;
