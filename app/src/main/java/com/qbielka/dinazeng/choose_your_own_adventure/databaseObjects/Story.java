@@ -24,8 +24,6 @@ public class Story {
     private int button4NextState;
 
     public Story(String CSVLine){
-        //todo fix this so it sets all values of  class.
-
         ArrayList<String> columns = breakCSVLineIntoColumns(CSVLine);
 
         id = Integer.parseInt(columns.get(0));
