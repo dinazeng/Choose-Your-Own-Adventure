@@ -7,6 +7,7 @@ import android.content.res.Resources;
 import android.os.Bundle;
 
 import com.qbielka.dinazeng.choose_your_own_adventure.R;
+import com.qbielka.dinazeng.choose_your_own_adventure.database.StoryDatabaseHelper;
 import com.qbielka.dinazeng.choose_your_own_adventure.databaseObjects.Story;
 
 import java.io.BufferedReader;
@@ -18,12 +19,15 @@ import java.util.ArrayList;
 
 public class LauncherActivity extends AppCompatActivity {
 
-    ArrayList <Story> storyArray;
+    StoryDatabaseHelper db;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_launcher);
         Intent intent = new Intent(getApplicationContext(), MenuActivity.class);
+
+        db = new StoryDatabaseHelper(this);
         try {
             todo();
         } catch (IOException e){
@@ -35,20 +39,20 @@ public class LauncherActivity extends AppCompatActivity {
 
     private void todo() throws IOException {
         final Resources resources =  getResources();
-        InputStream inputStream = resources.openRawResource(R.raw.StoryInput);
-        BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
-        try {
+        InputStream inputStream = resources.openRawResource(R.raw.story_input);
+        try (BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream))) {
             String line;
             while ((line = reader.readLine()) != null) {
                 addLineToDatabase(line);
             }
-        } finally {
-            reader.close();
         }
     }
 
     private void addLineToDatabase(String line) {
-        storyArray.add(new Story (line));
+        if(line == null || line.length() < 2){
+            return;
+        }
+        db.insert(new Story(line));
     }
 
 

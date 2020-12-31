@@ -1,27 +1,51 @@
 package com.qbielka.dinazeng.choose_your_own_adventure.model;
 
-import java.util.ArrayList;
+import android.content.Context;
 
-//TODO this class
+import com.qbielka.dinazeng.choose_your_own_adventure.database.StoryDatabaseHelper;
+import com.qbielka.dinazeng.choose_your_own_adventure.databaseObjects.Story;
+
+
+
 public class StoryModel {
+    private StoryDatabaseHelper db;
+    private Story thisStory;
 
-    private int storyBoard = 0;
-    public void button1Pushed(){getNextStory();}
+    public StoryModel(int key, Context context){
+        db = new StoryDatabaseHelper(context);
+        thisStory = db.getStory(key);
+    }
 
-    public void button2Pushed(){getNextStory();}
+    public void button1Pushed(){
+        int nextKey =  thisStory.getButton1NextState();
+        thisStory = db.getStory(nextKey);
+        getNextStory();
+    }
 
-    public void button3Pushed(){getNextStory();}
+    public void button2Pushed(){
+        int nextKey =  thisStory.getButton2NextState();
+        thisStory = db.getStory(nextKey);
+        getNextStory();
+    }
 
-    public void button4Pushed(){getNextStory();}
+    public void button3Pushed(){
+        int nextKey =  thisStory.getButton3NextState();
+        thisStory = db.getStory(nextKey);
+        getNextStory();
+    }
 
+    public void button4Pushed(){
+        int nextKey =  thisStory.getButton4NextState();
+        thisStory = db.getStory(nextKey);
+        getNextStory();
+    }
+
+    /**
+     * this is a function to get the next piece of the story for other classes to call.
+     * @return it returns a StoryPiece for the UI to use.
+     */
     public StoryPiece getNextStory(){
-
-        StoryPiece storyPiece = new StoryPiece("Default Story Piece");
-        storyPiece.addButton("Default Button "+(1+storyBoard));
-        storyPiece.addButton("Default Button "+(2+storyBoard));
-        storyPiece.addButton("Default Button "+(3+storyBoard));
-        storyBoard += 3;
-        return storyPiece;
+        return new StoryPiece(thisStory);
     }
 
 }
