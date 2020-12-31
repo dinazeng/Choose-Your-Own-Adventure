@@ -15,8 +15,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 
-import java.util.ArrayList;
-
 public class LauncherActivity extends AppCompatActivity {
 
     StoryDatabaseHelper db;
@@ -28,16 +26,20 @@ public class LauncherActivity extends AppCompatActivity {
         Intent intent = new Intent(getApplicationContext(), MenuActivity.class);
 
         db = new StoryDatabaseHelper(this);
+        boolean firstTimeRunning = true;
+        //todo reset firstTimeRunning to whatever we stored in sharedPreferences
         try {
-            todo();
+            if(firstTimeRunning){
+                readCSVFileIntoDatabase();
+            }
+            startActivity(intent);
         } catch (IOException e){
             // todo????
             // I have no solution for what happens right now the app essentially needs to crash
         }
-        startActivity(intent);
     }
 
-    private void todo() throws IOException {
+    private void readCSVFileIntoDatabase() throws IOException {
         final Resources resources =  getResources();
         InputStream inputStream = resources.openRawResource(R.raw.story_input);
         try (BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream))) {
