@@ -5,10 +5,8 @@ import android.content.Context;
 import com.qbielka.dinazeng.choose_your_own_adventure.database.StoryDatabaseHelper;
 import com.qbielka.dinazeng.choose_your_own_adventure.databaseObjects.Story;
 
-import java.security.PublicKey;
-import java.util.ArrayList;
 
-//TODO this class
+
 public class StoryModel {
     private StoryDatabaseHelper db;
     private Story thisStory;
