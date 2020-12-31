@@ -2,6 +2,7 @@ package com.qbielka.dinazeng.choose_your_own_adventure.database;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
@@ -60,13 +61,48 @@ public class StoryDatabaseHelper extends SQLiteOpenHelper {
     }
 
 
-    public Story querry(String querry){
-        String[] allcols = {COL_1, COL_2, COL_3, COL_4, COL_5, COL_6, COL_7, COL_8, COL_9, COL_10, COL_11, };
-//        db.query(TABLE_NAME, allcols,)
-        return new Story("TODO");
+    /**
+     * Function takes in a stateID and returns the state the ID is for.
+     * If the ID is not for a valid state the program will return null right now
+     * @param storyID this is the id for a row in the table
+     * @return a Story, this will be null if there is no answer to the querry
+     * or a story with all its information if it exists
+     */
+    //todo decide if it should return null or some default state which is just a reversal or something
+    public Story getStory(int storyID){
+        Cursor result = db.rawQuery("SELECT * FROM " + TABLE_NAME + " WHERE "+COL_1+"="+storyID,null);
+
+        // Case where there was no state with this id
+        if(result == null || result.getCount() == 0){
+            return null;
+        }
+        result.moveToFirst();
+
+        // Extract data from the cursor
+        String story = result.getString(result.getColumnIndex(COL_2));
+        int numButtons = result.getInt(result.getColumnIndex(COL_3));
+        String button1Text = result.getString(result.getColumnIndex(COL_4));
+        String button2Text = result.getString(result.getColumnIndex(COL_5));
+        String button3Text = result.getString(result.getColumnIndex(COL_6));
+        String button4Text = result.getString(result.getColumnIndex(COL_7));
+        int button1State = result.getInt(result.getColumnIndex(COL_8));
+        int button2State = result.getInt(result.getColumnIndex(COL_9));
+        int button3State = result.getInt(result.getColumnIndex(COL_10));
+        int button4State = result.getInt(result.getColumnIndex(COL_11));
+
+        // close the cursor before ending
+        result.close();
+
+        return new Story(storyID, story, numButtons,
+                button1Text, button1State, button2Text, button2State,
+                button3Text, button3State, button4Text, button4State);
     }
 
-
+    /**
+     *
+     * @param storyLine a story to be added to the database
+     * @return a boolean value to whether or not it has been added to the databaase
+     */
     public boolean insert(Story storyLine){
         ContentValues cv = new ContentValues();
         cv.put(COL_1, storyLine.getId());
