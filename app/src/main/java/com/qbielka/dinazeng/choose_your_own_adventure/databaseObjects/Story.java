@@ -1,5 +1,7 @@
 package com.qbielka.dinazeng.choose_your_own_adventure.databaseObjects;
 
+import android.database.Cursor;
+
 import java.util.ArrayList;
 
 public class Story {
@@ -74,6 +76,42 @@ public class Story {
 //        button1NextState = Integer.valueOf(story.charAt(0));
 //        button2NextState = Integer.valueOf(story.charAt(2));
 //        button3NextState = Integer.valueOf(story.charAt(4));
+    }
+
+    /**
+     * Buld the Story by providing a cursor
+     * //TODO this
+     */
+    public Story(Cursor res){
+
+    }
+
+    /**
+     * Build the story by providing all the member data
+     *
+     */
+    public Story(int id, String story, int numButtons,
+                 String button1Text, int button1NextState,
+                 String button2Text, int button2NextState,
+                 String button3Text, int button3NextState,
+                 String button4Text, int button4NextState
+                 ){
+        // Start of constructor
+        setId(id);
+        setStory(story);
+        setNumButtons(numButtons);
+
+        setButton1Text(button1Text);
+        setButton1NextState(button1NextState);
+
+        setButton2Text(button2Text);
+        setButton2NextState(button2NextState);
+
+        setButton3Text(button3Text);
+        setButton3NextState(button3NextState);
+
+        setButton4Text(button4Text);
+        setButton4NextState(button4NextState);
     }
 
     private static ArrayList<String> breakCSVLineIntoColumns(String CSVLine){
