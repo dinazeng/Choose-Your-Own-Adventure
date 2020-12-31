@@ -21,7 +21,6 @@ public class LauncherActivity extends AppCompatActivity {
 
     StoryDatabaseHelper db;
 
-    ArrayList <Story> storyArray;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,19 +40,16 @@ public class LauncherActivity extends AppCompatActivity {
     private void todo() throws IOException {
         final Resources resources =  getResources();
         InputStream inputStream = resources.openRawResource(R.raw.story_input);
-        BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
-        try {
+        try (BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream))) {
             String line;
             while ((line = reader.readLine()) != null) {
                 addLineToDatabase(line);
             }
-        } finally {
-            reader.close();
         }
     }
 
     private void addLineToDatabase(String line) {
-        storyArray.add(new Story (line));
+        db.insert(new Story(line));
     }
 
 
