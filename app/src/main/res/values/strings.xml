@@ -1,3 +1,14 @@
 <resources>
     <string name="app_name">Choose-Your-Own-Adventure</string>
+    <string name="start">START</string>
+    <string name="statistics">STATISTICS</string>
+    <string name="settings">SETTINGS</string>
+    <string name="teamname">teamName</string>
+    <string name="title">Title</string>
+    <string name="quince_bielka">Quince Bielka</string>
+    <string name="dina_zeng">Dina Zeng</string>
+    <string name="settingsSettings">Settings</string>
+    <string name="settingsStatistics">Statistics</string>
+    <string name="reset_game">Reset Game</string>
+    <string name="game_settings">Game Settings</string>
 </resources>
