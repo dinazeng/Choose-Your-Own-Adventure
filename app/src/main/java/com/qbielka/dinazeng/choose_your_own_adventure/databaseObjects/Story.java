@@ -20,12 +20,16 @@ public class Story {
     private String button4Text;
     private int button4NextState;
 
+    /**
+     * Build the story by parsing a CSV line
+     * @param CSVLine a row in a csv file
+     */
     public Story(String CSVLine){
         ArrayList<String> columns = breakCSVLineIntoColumns(CSVLine);
 
-        id = Integer.parseInt(columns.get(0));
-        story = columns.get(1);
-        numButtons = Integer.parseInt(columns.get(2));
+        setId(Integer.parseInt(columns.get(0)));
+        setStory(story = columns.get(1));
+        setNumButtons(numButtons = Integer.parseInt(columns.get(2)));
 
         //Todo replace this with an array of objects that will be read in and out of the database
         int b1Position = 3;
@@ -34,20 +38,20 @@ public class Story {
         int b4Position = 6;
 
         if(numButtons > 0){
-            button1Text = columns.get(b1Position);
-            button1NextState = Integer.parseInt(columns.get(b1Position+numButtons));
+            setButton1Text(columns.get(b1Position));
+            setButton1NextState(Integer.parseInt(columns.get(b1Position+numButtons)));
         }
         if(numButtons > 1){
-            button1Text = columns.get(b2Position);
-            button1NextState = Integer.parseInt(columns.get(b2Position+numButtons));
+            setButton2Text(columns.get(b2Position));
+            setButton2NextState(Integer.parseInt(columns.get(b2Position+numButtons)));
         }
         if(numButtons > 2){
-            button1Text = columns.get(b3Position);
-            button1NextState = Integer.parseInt(columns.get(b3Position+numButtons));
+            setButton3Text(columns.get(b3Position));
+            setButton3NextState(Integer.parseInt(columns.get(b3Position+numButtons)));
         }
         if(numButtons > 3){
-            button1Text = columns.get(b4Position);
-            button1NextState = Integer.parseInt(columns.get(b4Position+numButtons));
+            setButton4Text(columns.get(b4Position));
+            setButton4NextState(Integer.parseInt(columns.get(b4Position+numButtons)));
         }
 
         //todo talk to Dina about code flexibility
