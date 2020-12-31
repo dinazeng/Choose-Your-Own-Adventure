@@ -17,7 +17,7 @@ import java.util.ArrayList;
 
 public class GameActivity extends AppCompatActivity {
 
-    StoryModel storyModel = new StoryModel();
+    StoryModel storyModel = new StoryModel(1,this);
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
