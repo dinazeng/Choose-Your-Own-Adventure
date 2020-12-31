@@ -2,6 +2,8 @@ package com.qbielka.dinazeng.choose_your_own_adventure.databaseObjects;
 
 import android.database.Cursor;
 
+import com.qbielka.dinazeng.choose_your_own_adventure.CSVReader;
+
 import java.util.ArrayList;
 
 public class Story {
@@ -27,7 +29,7 @@ public class Story {
      * @param CSVLine a row in a csv file
      */
     public Story(String CSVLine){
-        ArrayList<String> columns = breakCSVLineIntoColumns(CSVLine);
+        ArrayList<String> columns = CSVReader.breakCSVLineIntoColumns(CSVLine);
 
         setId(Integer.parseInt(columns.get(0)));
         setStory(story = columns.get(1));
@@ -56,35 +58,8 @@ public class Story {
             setButton4NextState(Integer.parseInt(columns.get(b4Position+numButtons)));
         }
 
-        //todo talk to Dina about code flexibility
-//        id = Integer.valueOf(story.charAt(0));
-//
-//        story = story.substring(story.indexOf(',') + 1);
-//        this.story = story.substring(0, story.indexOf(','));
-//        story = story.substring(story.indexOf(',') + 1);
-//
-//        numButtons = Integer.valueOf(story.charAt(0));
-//        story = story.substring(story.indexOf(',') + 1);
-//
-//        button1Text = story.substring(0, story.indexOf(','));
-//        story = story.substring(story.indexOf(',') + 1);
-//        button2Text = story.substring(0, story.indexOf(','));
-//        story = story.substring(story.indexOf(',') + 1);
-//        button3Text = story.substring(0, story.indexOf(','));
-//        story = story.substring(story.indexOf(',') + 1);
-//
-//        button1NextState = Integer.valueOf(story.charAt(0));
-//        button2NextState = Integer.valueOf(story.charAt(2));
-//        button3NextState = Integer.valueOf(story.charAt(4));
     }
 
-    /**
-     * Buld the Story by providing a cursor
-     * //TODO this
-     */
-    public Story(Cursor res){
-
-    }
 
     /**
      * Build the story by providing all the member data
@@ -112,51 +87,6 @@ public class Story {
 
         setButton4Text(button4Text);
         setButton4NextState(button4NextState);
-    }
-
-    private static ArrayList<String> breakCSVLineIntoColumns(String CSVLine){
-        ArrayList<String> arr = new ArrayList<>();
-
-        for(int index = 0; index < CSVLine.length(); index++){
-            // Escape Characters will be handled
-            if(CSVLine.charAt(index) == '\\'){
-                //todo figure out how I handle escape chars
-                // for now skip the next character like it doesn't exist
-                index++;
-            }
-            //Handling for a Quote Mark, note that this is not an escaped quote mark
-            else if(CSVLine.charAt(index) == '\"'){
-                // first iterate to the next character
-                index++;
-                // then check for the next unescaped Quote mark
-                for (;index < CSVLine.length(); index++){
-                    // Ensure no escaped Quote marks break out of the enclosed quotes
-                    if(CSVLine.charAt(index) == '\\'){
-                        index++;
-                        continue;
-                    }
-                    //A Second Quote mark has been found
-                    if(CSVLine.charAt(index) == '\"'){
-                        break;
-                    }
-                }
-            }
-            // Handling a comma
-            else if(CSVLine.charAt(index) == ','){
-                // Cell starts with the first character and ends the character before the comma
-                String cell = CSVLine.substring(0,index);
-                CSVLine = CSVLine.substring(index + 1);
-                // the negative 1 will roll over into 0 for the next iteration of the loop
-                index = -1;
-                arr.add(cell);
-            }
-
-        }
-        // Handling hitting the end of input
-        arr.add(CSVLine);
-
-        // Return Statement
-        return arr;
     }
 
     public int getId() {
