@@ -49,6 +49,9 @@ public class LauncherActivity extends AppCompatActivity {
     }
 
     private void addLineToDatabase(String line) {
+        if(line == null || line.length() < 2){
+            return;
+        }
         db.insert(new Story(line));
     }
 
