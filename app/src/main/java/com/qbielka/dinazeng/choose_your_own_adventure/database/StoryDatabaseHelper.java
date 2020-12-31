@@ -68,7 +68,6 @@ public class StoryDatabaseHelper extends SQLiteOpenHelper {
      * @return a Story, this will be null if there is no answer to the querry
      * or a story with all its information if it exists
      */
-    //todo decide if it should return null or some default state which is just a reversal or something
     public Story getStory(int storyID){
         Cursor result = db.rawQuery("SELECT * FROM " + TABLE_NAME + " WHERE "+COL_1+"="+storyID,null);
 
