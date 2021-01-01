@@ -11,4 +11,14 @@
     <string name="settingsStatistics">Statistics</string>
     <string name="reset_game">Reset Game</string>
     <string name="game_settings">Game Settings</string>
+    <string name="switchOption1">Switch</string>
+    <string name="switchOption2">Switch</string>
+    <string name="switchOption3">Switch</string>
+    <string name="lead_developer">Lead Developer</string>
+    <string name="picture_of_dina">Picture of Dina</string>
+    <string name="developer">Developer</string>
+    <string name="picture_of_author">Picture of Author</string>
+    <string name="writer_name_here">writer name here</string>
+    <string name="writer">Writer</string>
+    <string name="picture_of_quince">Picture of Quince</string>
 </resources>

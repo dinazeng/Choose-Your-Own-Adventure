@@ -12,11 +12,16 @@
 
         android:orientation="vertical">
 
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="6" />
+
         <TextView
             android:id="@+id/menuAbout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="4"
+            android:layout_weight="2"
             android:text="@string/title"
             android:gravity="center_horizontal" />
 
@@ -27,15 +32,23 @@
             android:layout_weight="2"
             android:gravity="center_horizontal"
             tools:srcCompat="@tools:sample/avatars"
-            android:contentDescription="TODO" />
+            android:contentDescription="@string/picture_of_quince" />
 
         <TextView
             android:id="@+id/QuinceAbout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="3"
+            android:layout_weight="0.25"
             android:gravity="center_horizontal"
             android:text="@string/quince_bielka" />
+
+        <TextView
+            android:id="@+id/QuinceJob"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:gravity="center_horizontal"
+            android:text="@string/lead_developer"/>
 
         <ImageView
             android:id="@+id/DinaPic"
@@ -43,14 +56,48 @@
             android:layout_height="wrap_content"
             android:layout_weight="2"
             tools:srcCompat="@tools:sample/avatars"
-            android:contentDescription="TODO" />
+            android:contentDescription="@string/picture_of_dina" />
 
         <TextView
             android:id="@+id/DinaAbout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="3"
+            android:layout_weight="0.25"
             android:gravity="center_horizontal"
             android:text="@string/dina_zeng" />
+
+        <TextView
+            android:id="@+id/DinaJob"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:gravity="center_horizontal"
+            android:text="@string/developer"/>
+
+        <ImageView
+            android:id="@+id/WriterPic"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:gravity="center_horizontal"
+            tools:srcCompat="@tools:sample/avatars"
+            android:contentDescription="@string/picture_of_author" />
+
+        <TextView
+            android:id="@+id/WriterAbout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.25"
+            android:gravity="center_horizontal"
+            android:text="@string/writer_name_here" />
+
+        <TextView
+            android:id="@+id/WriteJob"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:gravity="center_horizontal"
+            android:text="@string/writer"/>
+
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
