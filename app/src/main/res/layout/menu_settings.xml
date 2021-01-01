@@ -17,18 +17,6 @@
             android:gravity="center_horizontal"/>
 
         <Button
-            android:id="@+id/gameSettings"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/game_settings" />
-
-        <Button
-            android:id="@+id/gameStatistics"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/settingsStatistics" />
-
-        <Button
             android:id="@+id/gameReset"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
