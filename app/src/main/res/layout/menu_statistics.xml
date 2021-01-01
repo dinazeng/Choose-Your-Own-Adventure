@@ -17,7 +17,7 @@
             android:layout_height="wrap_content" />
 
         <TextView
-            android:id="@+id/textView"
+            android:id="@+id/statistics_title"
             android:layout_width="350dp"
             android:layout_gravity="center"
             android:layout_height="wrap_content"
@@ -32,7 +32,7 @@
             app:barrierDirection="top" />
 
         <TextView
-            android:id="@+id/textView2"
+            android:id="@+id/stat1"
             android:layout_width="350dp"
             android:layout_gravity="center"
             android:layout_height="wrap_content"
@@ -40,7 +40,7 @@
             android:text="@string/statistic1" />
 
         <TextView
-            android:id="@+id/textView3"
+            android:id="@+id/stat2"
             android:layout_width="350dp"
             android:layout_gravity="center"
             android:layout_height="wrap_content"
@@ -48,7 +48,7 @@
             android:text="@string/statistic2" />
 
         <TextView
-            android:id="@+id/textView4"
+            android:id="@+id/stat3"
             android:layout_width="350dp"
             android:layout_gravity="center"
             android:layout_height="wrap_content"
@@ -56,7 +56,7 @@
             android:text="@string/statistic3" />
 
         <TextView
-            android:id="@+id/textView5"
+            android:id="@+id/stat4"
             android:layout_width="350dp"
             android:layout_gravity="center"
             android:layout_height="wrap_content"
@@ -64,7 +64,7 @@
             android:text="@string/statistic4" />
 
         <TextView
-            android:id="@+id/textView6"
+            android:id="@+id/stat5"
             android:layout_width="350dp"
             android:layout_gravity="center"
             android:layout_height="wrap_content"
