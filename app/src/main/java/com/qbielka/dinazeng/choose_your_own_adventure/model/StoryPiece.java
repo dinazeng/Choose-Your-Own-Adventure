@@ -1,5 +1,7 @@
 package com.qbielka.dinazeng.choose_your_own_adventure.model;
 
+import com.qbielka.dinazeng.choose_your_own_adventure.databaseObjects.Story;
+
 import java.util.ArrayList;
 
 /**
@@ -13,22 +15,25 @@ public class StoryPiece {
 
     /**
      * This is the constructor for StoryPiece it required
-     * @param story is the text that will be shown in the UI that is not a button
+     * @param story is the storty fetched from the database
      */
-    public StoryPiece(String story){
-        this.story = story;
-    }
-
-    /**
-     * needs the text of a button
-     * @return will return the current number of buttons registered
-     */
-    public int addButton(String buttonText) {
-        if(buttonText == null){
-            return buttons.size();
+    public StoryPiece(Story story){
+        this.story = story.getStory();
+        this.buttons = new ArrayList<>();
+        if(story.getNumButtons() > 0){
+            buttons.add(story.getButton1Text());
         }
-        buttons.add(buttonText);
-        return buttons.size();
+        if(story.getNumButtons() > 1){
+            buttons.add(story.getButton2Text());
+        }
+        if(story.getNumButtons() > 2){
+            buttons.add(story.getButton3Text());
+        }
+        if(story.getNumButtons() > 3){
+            buttons.add(story.getButton4Text());
+        }
+
+
     }
 
 
