@@ -37,7 +37,7 @@
             android:layout_gravity="center"
             android:layout_height="wrap_content"
             android:layout_weight="0.5"
-            android:text="@string/statistic1" />
+            android:text="@string/statistics1" />
 
         <TextView
             android:id="@+id/stat2"
@@ -45,7 +45,7 @@
             android:layout_gravity="center"
             android:layout_height="wrap_content"
             android:layout_weight="0.5"
-            android:text="@string/statistic2" />
+            android:text="@string/statistics2" />
 
         <TextView
             android:id="@+id/stat3"
@@ -53,7 +53,7 @@
             android:layout_gravity="center"
             android:layout_height="wrap_content"
             android:layout_weight="0.5"
-            android:text="@string/statistic3" />
+            android:text="@string/statistics3" />
 
         <TextView
             android:id="@+id/stat4"
@@ -61,7 +61,7 @@
             android:layout_gravity="center"
             android:layout_height="wrap_content"
             android:layout_weight="0.5"
-            android:text="@string/statistic4" />
+            android:text="@string/statistics4" />
 
         <TextView
             android:id="@+id/stat5"
@@ -69,7 +69,7 @@
             android:layout_gravity="center"
             android:layout_height="wrap_content"
             android:layout_weight="0.5"
-            android:text="@string/statistic5" />
+            android:text="@string/statistics5" />
 
         <Space
             android:layout_width="match_parent"

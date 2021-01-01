@@ -21,4 +21,9 @@
     <string name="writer_name_here">writer name here</string>
     <string name="writer">Writer</string>
     <string name="picture_of_quince">Picture of Quince</string>
+    <string name="statistics5">statistics5</string>
+    <string name="statistics4">statistics4</string>
+    <string name="statistics3">statistics3</string>
+    <string name="statistics2">statistics2</string>
+    <string name="statistics1">statistics1</string>
 </resources>
