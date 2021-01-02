@@ -12,6 +12,8 @@ import java.util.ArrayList;
 public class StoryPiece {
 
     private String story;
+    //TODO replace buttonEffects with a Gamestate
+    private String buttonEffects;
     private ArrayList<String> buttons;
 
     /**
@@ -33,5 +35,9 @@ public class StoryPiece {
 
     public ArrayList<String> getButtons() {
         return buttons;
+    }
+
+    public String getButtonEffects() {
+        return buttonEffects;
     }
 }
