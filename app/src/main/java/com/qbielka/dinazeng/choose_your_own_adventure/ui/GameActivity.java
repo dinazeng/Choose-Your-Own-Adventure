@@ -1,10 +1,8 @@
-package com.qbielka.dinazeng.choose_your_own_adventure.UI;
+package com.qbielka.dinazeng.choose_your_own_adventure.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -54,7 +52,7 @@ public class GameActivity extends AppCompatActivity {
                 button_1.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        storyModel.button1Pushed();
+                        storyModel.buttonNPushed(1);
                         //TODO
                     }
                 });
@@ -64,7 +62,7 @@ public class GameActivity extends AppCompatActivity {
                 button_2.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        storyModel.button2Pushed();
+                        storyModel.buttonNPushed(2);
                         //TODO
                     }
                 });
@@ -74,7 +72,7 @@ public class GameActivity extends AppCompatActivity {
                 button_3.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        storyModel.button3Pushed();
+                        storyModel.buttonNPushed(3);
                         //TODO
                     }
                 });
@@ -84,7 +82,7 @@ public class GameActivity extends AppCompatActivity {
                 button_4.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        storyModel.button4Pushed();
+                        storyModel.buttonNPushed(4);
                         //TODO
                     }
                 });
