@@ -8,25 +8,23 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import androidx.annotation.Nullable;
 
+import com.qbielka.dinazeng.choose_your_own_adventure.databaseObjects.Button;
 import com.qbielka.dinazeng.choose_your_own_adventure.databaseObjects.Story;
+
+import java.util.ArrayList;
 
 public class StoryDatabaseHelper extends SQLiteOpenHelper {
     public static final String DATABASE_NAME = "Story.db";
-    public static final String TABLE_NAME = "story_table";
+    public static final String STORY_TABLE = "story_table";
+    public static final String BUTTON_TABLE = "button_table";
 
     public static final String COL_1 = "ID";
     public static final String COL_2 = "STORY";
-    public static final String COL_3 = "NUM_BUTTONS";
 
-    public static final String COL_4 = "BUTTON_1_TEXT";
-    public static final String COL_5 = "BUTTON_2_TEXT";
-    public static final String COL_6 = "BUTTON_3_TEXT";
-    public static final String COL_7 = "BUTTON_4_TEXT";
-
-    public static final String COL_8 = "BUTTON_1_KEY";
-    public static final String COL_9 = "BUTTON_2_KEY";
-    public static final String COL_10 = "BUTTON_3_KEY";
-    public static final String COL_11 = "BUTTON_4_KEY";
+    public static final String COL_A = "BUTTON_KEY";
+    public static final String COL_B = "BUTTON_TEXT";
+    public static final String COL_C = "STORY_ID";
+    public static final String COL_D = "ID";
 
     private SQLiteDatabase db;
 
@@ -37,26 +35,23 @@ public class StoryDatabaseHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        String createTable = "Create table "+TABLE_NAME+" ( "+
+        String createStoryTable = "Create table "+STORY_TABLE+" ( "+
                 COL_1 + " INTEGER PRIMARY KEY, "+
-                COL_2 + " TEXT, "+
-                COL_3 + " INTEGER, " +
-                COL_4 + " TEXT, " +
-                COL_5 + " TEXT, " +
-                COL_6 + " TEXT, " +
-                COL_7 + " TEXT, " +
-                COL_8 + " INTEGER, " +
-                COL_9 + " INTEGER, " +
-                COL_10+ " INTEGER, " +
-                COL_11+ " INTEGER" +
+                COL_2 + " TEXT" +
                 ")";
-
-        db.execSQL(createTable);
+        String createButtonTable = "Create table "+ BUTTON_TABLE+" ( "+
+                COL_D + " INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "+
+                COL_B + " TEXT, "+
+                COL_C + " INTEGER, " +
+                COL_A + " INTEGER" +
+                ")";
+        db.execSQL(createStoryTable);
+        db.execSQL(createButtonTable);
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int i, int i1) {
-        db.execSQL("DROP TABLE IF EXISTS "+TABLE_NAME);
+        db.execSQL("DROP TABLE IF EXISTS "+STORY_TABLE);
         onCreate(db);
     }
 
@@ -69,32 +64,33 @@ public class StoryDatabaseHelper extends SQLiteOpenHelper {
      * or a story with all its information if it exists
      */
     public Story getStory(int storyID){
-        Cursor result = db.rawQuery("SELECT * FROM " + TABLE_NAME + " WHERE "+COL_1+"="+storyID,null);
+        Cursor result = db.rawQuery("SELECT * FROM " + STORY_TABLE + " WHERE "+COL_1+"="+storyID,null);
+        Cursor buttonResult = db.rawQuery("SELECT * FROM " + BUTTON_TABLE + " WHERE "+COL_C+"="+storyID,null);
 
         // Case where there was no state with this id
         if(result == null || result.getCount() == 0){
             return null;
         }
         result.moveToFirst();
+        buttonResult.moveToFirst();
 
         // Extract data from the cursor
         String story = result.getString(result.getColumnIndex(COL_2));
-        int numButtons = result.getInt(result.getColumnIndex(COL_3));
-        String button1Text = result.getString(result.getColumnIndex(COL_4));
-        String button2Text = result.getString(result.getColumnIndex(COL_5));
-        String button3Text = result.getString(result.getColumnIndex(COL_6));
-        String button4Text = result.getString(result.getColumnIndex(COL_7));
-        int button1State = result.getInt(result.getColumnIndex(COL_8));
-        int button2State = result.getInt(result.getColumnIndex(COL_9));
-        int button3State = result.getInt(result.getColumnIndex(COL_10));
-        int button4State = result.getInt(result.getColumnIndex(COL_11));
-
+        int numButtons = buttonResult.getCount();
+        ArrayList <Button> buttonArr = new ArrayList<Button>();
+        String buttonText = buttonResult.getString(buttonResult.getColumnIndex(COL_B));
+        int buttonKey = buttonResult.getInt(buttonResult.getColumnIndex(COL_A));
+        buttonArr.add(new Button (buttonKey, buttonText));
+        while (buttonResult.moveToNext()) {
+            buttonText = buttonResult.getString(buttonResult.getColumnIndex(COL_B));
+            buttonKey = buttonResult.getInt(buttonResult.getColumnIndex(COL_A));
+            buttonArr.add(new Button(buttonKey, buttonText));
+        }
         // close the cursor before ending
         result.close();
+        buttonResult.close();
 
-        return new Story(storyID, story, numButtons,
-                button1Text, button1State, button2Text, button2State,
-                button3Text, button3State, button4Text, button4State);
+        return new Story(storyID, story, buttonArr);
     }
 
     /**
@@ -103,20 +99,19 @@ public class StoryDatabaseHelper extends SQLiteOpenHelper {
      * @return a boolean value to whether or not it has been added to the databaase
      */
     public boolean insert(Story storyLine){
-        ContentValues cv = new ContentValues();
-        cv.put(COL_1, storyLine.getId());
-        cv.put(COL_2, storyLine.getStory());
-        cv.put(COL_3, storyLine.getNumButtons());
-        cv.put(COL_4, storyLine.getButton1Text());
-        cv.put(COL_5, storyLine.getButton2Text());
-        cv.put(COL_6, storyLine.getButton3Text());
-        cv.put(COL_7, storyLine.getButton4Text());
-        cv.put(COL_8, storyLine.getButton1NextState());
-        cv.put(COL_9, storyLine.getButton2NextState());
-        cv.put(COL_10, storyLine.getButton3NextState());
-        cv.put(COL_11, storyLine.getButton4NextState());
+        ContentValues storyRow = new ContentValues();
+        storyRow.put(COL_1, storyLine.getId());
+        storyRow.put(COL_2, storyLine.getStory());
 
-        long result = db.insert(TABLE_NAME, null, cv);
+        ContentValues buttonRow = new ContentValues();
+        for (Button button: storyLine.getButtonArr()) {
+            buttonRow.put(COL_A, button.getButtonKey());
+            buttonRow.put(COL_B, button.getButtonText());
+            buttonRow.put(COL_C, storyLine.getId());
+            db.insert(BUTTON_TABLE, null, buttonRow);
+        }
+
+        long result = db.insert(STORY_TABLE, null, storyRow);
 
         return result != -1;
     }
