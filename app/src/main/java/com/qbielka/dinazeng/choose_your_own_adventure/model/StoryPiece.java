@@ -1,5 +1,6 @@
 package com.qbielka.dinazeng.choose_your_own_adventure.model;
 
+import com.qbielka.dinazeng.choose_your_own_adventure.databaseObjects.Button;
 import com.qbielka.dinazeng.choose_your_own_adventure.databaseObjects.Story;
 
 import java.util.ArrayList;
@@ -20,20 +21,9 @@ public class StoryPiece {
     public StoryPiece(Story story){
         this.story = story.getStory();
         this.buttons = new ArrayList<>();
-        if(story.getNumButtons() > 0){
-            buttons.add(story.getButton1Text());
+        for (Button button: story.getButtonArr()){
+            this.buttons.add(button.getButtonText());
         }
-        if(story.getNumButtons() > 1){
-            buttons.add(story.getButton2Text());
-        }
-        if(story.getNumButtons() > 2){
-            buttons.add(story.getButton3Text());
-        }
-        if(story.getNumButtons() > 3){
-            buttons.add(story.getButton4Text());
-        }
-
-
     }
 
 
