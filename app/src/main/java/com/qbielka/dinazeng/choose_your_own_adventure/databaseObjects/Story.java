@@ -8,7 +8,12 @@ import java.util.ArrayList;
 
 public class Story {
 
-    int id;
+    private static final int FIRST_BUTTON_COL = 3;
+    public static final int ID_COLUMN = 0;
+    public static final int NUM_BUTTONS_COLUMN = 2;
+    public static final int STORY_COLUMN = 1;
+
+    private int id;
     private String story;
     private ArrayList<Button> buttonArr;
 
@@ -18,16 +23,21 @@ public class Story {
      */
     public Story(String CSVLine){
         ArrayList<String> columns = CSVReader.breakCSVLineIntoColumns(CSVLine);
-        int numButtons = Integer.parseInt(columns.get(2));
+        int numButtons = Integer.parseInt(columns.get(NUM_BUTTONS_COLUMN));
 
-        setId(Integer.parseInt(columns.get(0)));
-        setStory(story = columns.get(1));
+        setId(Integer.parseInt(columns.get(ID_COLUMN)));
+        setStory(story = columns.get(STORY_COLUMN));
 
         buttonArr = new ArrayList<>();
         for (int n = 0; n < numButtons; n++){
-            String buttonText = columns.get(3+n);
-            int buttonKey = Integer.parseInt(columns.get(3+n+numButtons));
-            buttonArr.add(new Button(buttonKey, buttonText));
+
+            //Button Effects are always first
+            String buttonEffects = columns.get(FIRST_BUTTON_COL + 3*n );
+            //ButtonText is always second
+            String buttonText = columns.get(FIRST_BUTTON_COL+ 3*n + 1);
+            //Button Keys are always third
+            int buttonKey = Integer.parseInt(columns.get(FIRST_BUTTON_COL + 3*n +2));
+            buttonArr.add(new Button(buttonKey, buttonText, buttonEffects));
         }
     }
 
