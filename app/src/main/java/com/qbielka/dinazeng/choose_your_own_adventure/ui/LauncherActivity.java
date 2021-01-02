@@ -2,7 +2,9 @@ package com.qbielka.dinazeng.choose_your_own_adventure.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.os.Bundle;
 
@@ -17,7 +19,10 @@ import java.io.InputStreamReader;
 
 public class LauncherActivity extends AppCompatActivity {
 
-    StoryDatabaseHelper db;
+    private StoryDatabaseHelper db;
+
+    private static final String SHARED_PREFERENCES_ACCESS = "ChooseYourOwnAdventureAccess";
+    private static final String FIRST_TIME_CODE = "GameState";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,16 +31,22 @@ public class LauncherActivity extends AppCompatActivity {
         Intent intent = new Intent(getApplicationContext(), MenuActivity.class);
 
         db = new StoryDatabaseHelper(this);
-        boolean firstTimeRunning = true;
-        //todo reset firstTimeRunning to whatever we stored in sharedPreferences
+        SharedPreferences savedGame = this.getSharedPreferences(SHARED_PREFERENCES_ACCESS, Context.MODE_PRIVATE);
+        boolean firstTimeRunning = savedGame.getBoolean(FIRST_TIME_CODE, true);
+
+
         try {
             if(firstTimeRunning){
                 readCSVFileIntoDatabase();
+                SharedPreferences.Editor editor = savedGame.edit();
+                editor.putBoolean(FIRST_TIME_CODE, false);
+                editor.apply();
             }
             startActivity(intent);
         } catch (IOException e){
             // todo????
             // I have no solution for what happens right now the app essentially needs to crash
+            // I freeze on this screen for now
         }
     }
 
