@@ -1,4 +1,4 @@
-package com.qbielka.dinazeng.choose_your_own_adventure.UI;
+package com.qbielka.dinazeng.choose_your_own_adventure.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
 
