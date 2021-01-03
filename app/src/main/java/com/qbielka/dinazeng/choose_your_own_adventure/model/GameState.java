@@ -16,50 +16,40 @@ public class GameState {
     }
 
     // Fields that change from game to game
-    private int grassCount;
-    private int twigCount;
-    private int flintCount;
+    private int grass;
+    private int twigs;
+    private int flint;
+    private int time;
 
-    /**
-     * default constructor to create a new game
-     */
-    public GameState(){
-        this.grassCount = 0;
-        this.twigCount = 0;
-        this.flintCount = 0;
+    public int getGrass() {
+        return grass;
     }
 
-    /**
-     * constructor to rebuild the old game from information
-     */
-    public GameState(int grassCount, int twigCount, int flintCount) {
-        this.grassCount = grassCount;
-        this.twigCount = twigCount;
-        this.flintCount = flintCount;
+    public void setGrass(int grass) {
+        this.grass = grass;
     }
 
-    // Getters and Setters
-    public int getGrassCount() {
-        return grassCount;
+    public int getTwigs() {
+        return twigs;
     }
 
-    public void setGrassCount(int grassCount) {
-        this.grassCount = grassCount;
+    public void setTwigs(int twigs) {
+        this.twigs = twigs;
     }
 
-    public int getTwigCount() {
-        return twigCount;
+    public int getFlint() {
+        return flint;
     }
 
-    public void setTwigCount(int twigCount) {
-        this.twigCount = twigCount;
+    public void setFlint(int flint) {
+        this.flint = flint;
     }
 
-    public int getFlintCount() {
-        return flintCount;
+    public int getTime() {
+        return time;
     }
 
-    public void setFlintCount(int flintCount) {
-        this.flintCount = flintCount;
+    public void setTime(int time) {
+        this.time = time;
     }
 }
