@@ -4,6 +4,18 @@ import com.google.gson.Gson;
 
 public class GameState {
 
+    // Game information
+    private int currentDatabaseStoryKey;
+
+    public int getCurrentDatabaseStoryKey() {
+        return currentDatabaseStoryKey;
+    }
+
+    public void setCurrentDatabaseStoryKey(int currentDatabaseStoryKey) {
+        this.currentDatabaseStoryKey = currentDatabaseStoryKey;
+    }
+
+    // Fields that change from game to game
     private int grassCount;
     private int twigCount;
     private int flintCount;

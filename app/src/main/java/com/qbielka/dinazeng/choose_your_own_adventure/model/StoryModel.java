@@ -16,26 +16,8 @@ public class StoryModel {
         thisStory = db.getStory(key);
     }
 
-    public void button1Pushed(){
-        int nextKey =  thisStory.getButton1NextState();
-        thisStory = db.getStory(nextKey);
-        getNextStory();
-    }
-
-    public void button2Pushed(){
-        int nextKey =  thisStory.getButton2NextState();
-        thisStory = db.getStory(nextKey);
-        getNextStory();
-    }
-
-    public void button3Pushed(){
-        int nextKey =  thisStory.getButton3NextState();
-        thisStory = db.getStory(nextKey);
-        getNextStory();
-    }
-
-    public void button4Pushed(){
-        int nextKey =  thisStory.getButton4NextState();
+    public void buttonNPushed(int num){
+        int nextKey =  thisStory.getButtonArr().get(num).getButtonKey();
         thisStory = db.getStory(nextKey);
         getNextStory();
     }

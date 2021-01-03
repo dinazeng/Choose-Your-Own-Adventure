@@ -9,9 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ChooseYourOwnAdventure">
-        <activity android:name=".UI.GameActivity"></activity>
-        <activity android:name=".UI.MenuActivity" />
-        <activity android:name=".UI.LauncherActivity">
+        <activity android:name=".ui.GameActivity"></activity>
+        <activity android:name=".ui.MenuActivity" />
+        <activity android:name=".ui.LauncherActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

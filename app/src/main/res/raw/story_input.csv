@@ -1,5 +1,4 @@
-1,"You are alone in the wilderness. What do you do?",3,"Find Some Rescources","Make a Tool","Take an Action",2,3,4
-2,"Which Rescource would you like to gather?",4,+1flint-1time"Some Flint to make tools with.",+1grass-1time"Some Grass to make rope or kindling with.",+1twigs-1time"Some Twigs to make tools with.","Go Back.",1,1,1,1
-3,"Which Tool would you like to make?",4,-1flint-1twigs-1time"an Axe to chop wood faster.",-1flint-1twigs-1time"A Spear to better defend yourself and hunt.",-1grass-1twigs-1time"A Trap to hunt while you are away.","Go Back.",1,1,1,1
-4,"Take which Action?",3,-1grass-1twigs"Make a fire",-1food+10hunger"Eat Some Food","Go Back.",1,1,1
-
+1,"You are alone in the wilderness. What do you do?",3,,"Find Some Resources",2,,"Make a Tool",3,,"Take an Action",4
+2,"Which Resource would you like to gather?",4,+1flint-1time,"Some Flint to make tools with.",1,+1grass-1time,"Some Grass to make rope or kindling with.",1,+1twigs-1time,"Some Twigs to make tools with.",1,,"Go Back.",1
+3,"Which Tool would you like to make?",4,-1flint-1twigs-1time,"an Axe to chop wood faster.",1,-1flint-1twigs-1time,"A Spear to better defend yourself and hunt.",1,-1grass-1twigs-1time,"A Trap to hunt while you are away.",1,,"Go Back.",1
+4,"Take which Action?",3,-1grass-1twigs,"Make a fire",1,-1food+10hunger,"Eat Some Food",1,,"Go Back.",1
