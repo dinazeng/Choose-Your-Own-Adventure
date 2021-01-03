@@ -15,11 +15,15 @@ import java.util.ArrayList;
 
 public class GameActivity extends AppCompatActivity {
 
-    StoryModel storyModel = new StoryModel(1,this);
+
+    StoryModel storyModel;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
+
+        storyModel = new StoryModel(1, getApplicationContext());
 
         foo();
     }
