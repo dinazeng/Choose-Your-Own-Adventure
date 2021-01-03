@@ -17,19 +17,15 @@ public class Singleton {
     private static Singleton instance = null;
 
     // private variables to access a json serializer library and the main app's context
-    private final Gson gson;
-    private final Context context;
+    private static final Gson gson = new Gson();
 
     //public member data
     public GameState gameState;
 
     private Singleton(Context appContext){
-        //setup variables
-        context = appContext;
-        gson = new Gson();
 
         // load in last save data
-        SharedPreferences savedGame = context.getSharedPreferences(SHARED_PREFERENCES_ACCESS, Context.MODE_PRIVATE);
+        SharedPreferences savedGame = appContext.getSharedPreferences(SHARED_PREFERENCES_ACCESS, Context.MODE_PRIVATE);
         String saveFile = savedGame.getString(GAME_STATE_CODE, "");
 
         // turn save data into a current game or start a new game if no save data exists
@@ -41,12 +37,12 @@ public class Singleton {
 
     }
 
-    public void SaveGame(){
+    public static void SaveGame(Context appContext){
         // get save data from the current game
-        String saveFile = gson.toJson(gameState);
+        String saveFile = gson.toJson(getInstance(appContext).gameState);
 
         // make a saveFile in sharedPreferences
-        SharedPreferences savedGame = context.getSharedPreferences(SHARED_PREFERENCES_ACCESS, Context.MODE_PRIVATE);
+        SharedPreferences savedGame = appContext.getSharedPreferences(SHARED_PREFERENCES_ACCESS, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = savedGame.edit();
         editor.putString(GAME_STATE_CODE, saveFile);
         editor.apply();

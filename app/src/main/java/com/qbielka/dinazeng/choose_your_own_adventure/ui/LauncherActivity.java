@@ -11,6 +11,7 @@ import android.os.Bundle;
 import com.qbielka.dinazeng.choose_your_own_adventure.R;
 import com.qbielka.dinazeng.choose_your_own_adventure.database.StoryDatabaseHelper;
 import com.qbielka.dinazeng.choose_your_own_adventure.databaseObjects.Story;
+import com.qbielka.dinazeng.choose_your_own_adventure.model.Singleton;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -37,10 +38,17 @@ public class LauncherActivity extends AppCompatActivity {
 
         try {
             if(firstTimeRunning){
+                // Read the CSV file
                 readCSVFileIntoDatabase();
+
+                // Save the face we have run this once into the sharedPreferences
                 SharedPreferences.Editor editor = savedGame.edit();
                 editor.putBoolean(FIRST_TIME_CODE, false);
                 editor.apply();
+
+                // Singleton saves the starting state for the Game to use.
+                Singleton.getInstance(this).gameState.setCurrentDatabaseStoryKey(1);
+                Singleton.SaveGame(this);
             }
             startActivity(intent);
         } catch (IOException e){
