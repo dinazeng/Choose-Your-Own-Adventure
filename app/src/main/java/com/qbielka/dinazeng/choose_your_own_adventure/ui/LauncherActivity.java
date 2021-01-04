@@ -23,7 +23,7 @@ public class LauncherActivity extends AppCompatActivity {
     private StoryDatabaseHelper db;
 
     private static final String SHARED_PREFERENCES_ACCESS = "ChooseYourOwnAdventureAccess";
-    private static final String FIRST_TIME_CODE = "GameState";
+    private static final String FIRST_TIME_CODE = "FIRST_TIME_CODE";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
