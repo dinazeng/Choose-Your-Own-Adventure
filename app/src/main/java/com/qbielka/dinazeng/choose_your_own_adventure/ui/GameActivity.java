@@ -57,7 +57,7 @@ public class GameActivity extends AppCompatActivity {
                     @Override
                     public void onClick(View v) {
                         storyModel.buttonNPushed(1);
-                        //TODO
+                        updateUI();
                     }
                 });
             }
@@ -67,7 +67,7 @@ public class GameActivity extends AppCompatActivity {
                     @Override
                     public void onClick(View v) {
                         storyModel.buttonNPushed(2);
-                        //TODO
+                        updateUI();
                     }
                 });
             }
@@ -77,7 +77,7 @@ public class GameActivity extends AppCompatActivity {
                     @Override
                     public void onClick(View v) {
                         storyModel.buttonNPushed(3);
-                        //TODO
+                        updateUI();
                     }
                 });
             }
@@ -87,13 +87,16 @@ public class GameActivity extends AppCompatActivity {
                     @Override
                     public void onClick(View v) {
                         storyModel.buttonNPushed(4);
-                        //TODO
+                        updateUI();
                     }
                 });
             }
         }
 
 
+    }
+    private void updateUI(){
+        // todo
     }
 
 }
