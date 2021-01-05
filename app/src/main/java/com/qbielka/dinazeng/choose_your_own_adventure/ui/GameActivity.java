@@ -82,6 +82,7 @@ public class GameActivity extends AppCompatActivity {
      * @return returns a boolean with the validity of the button.
      */
     private boolean isButtonNValid(int buttonNum, StoryPiece storyPiece) {
+        //TODO add in checks to the storyPiece's Button effects
         return storyPiece.getButtons().size() > buttonNum - 1;
     }
 
