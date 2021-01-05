@@ -17,7 +17,10 @@ public class GameActivity extends AppCompatActivity {
 
 
     StoryModel storyModel;
-
+    Button button_1;
+    Button button_2;
+    Button button_3;
+    Button button_4;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,62 +42,53 @@ public class GameActivity extends AppCompatActivity {
     }
 
     public void setButtons (StoryPiece storyPiece){
-        Button button_1 = findViewById(R.id.game_option1);
-        Button button_2 = findViewById(R.id.game_option2);
-        Button button_3 = findViewById(R.id.game_option3);
-        Button button_4 = findViewById(R.id.game_option4);
+        button_1 = findViewById(R.id.game_option1);
+        button_2 = findViewById(R.id.game_option2);
+        button_3 = findViewById(R.id.game_option3);
+        button_4 = findViewById(R.id.game_option4);
 
-        button_1.setVisibility(View.GONE);
-        button_2.setVisibility(View.GONE);
-        button_3.setVisibility(View.GONE);
-        button_4.setVisibility(View.GONE);
+        hideButtons();
 
         ArrayList<String> buttonList = storyPiece.getButtons();
         for (int num = 0; num < buttonList.size(); num++){
             if (num == 0){
                 button_1.setVisibility(View.VISIBLE);
-                button_1.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        storyModel.buttonNPushed(1);
-                        updateUI();
-                    }
-                });
+                setOnClickListeners(button_1, 1);
             }
             if (num == 1){
                 button_2.setVisibility(View.VISIBLE);
-                button_2.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        storyModel.buttonNPushed(2);
-                        updateUI();
-                    }
-                });
+                setOnClickListeners(button_2, 2);
             }
             if (num == 2){
                 button_3.setVisibility(View.VISIBLE);
-                button_3.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        storyModel.buttonNPushed(3);
-                        updateUI();
-                    }
-                });
+                setOnClickListeners(button_3, 3);
             }
             if (num == 3){
                 button_4.setVisibility(View.VISIBLE);
-                button_4.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        storyModel.buttonNPushed(4);
-                        updateUI();
-                    }
-                });
+                setOnClickListeners(button_4, 4);
             }
         }
 
 
     }
+
+    private void setOnClickListeners(Button button_1, int i) {
+        button_1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                storyModel.buttonNPushed(i);
+                updateUI();
+            }
+        });
+    }
+
+    private void hideButtons() {
+        button_1.setVisibility(View.GONE);
+        button_2.setVisibility(View.GONE);
+        button_3.setVisibility(View.GONE);
+        button_4.setVisibility(View.GONE);
+    }
+
     private void updateUI(){
         // todo
     }
