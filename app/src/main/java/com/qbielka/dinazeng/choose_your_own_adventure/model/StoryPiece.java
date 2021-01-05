@@ -13,7 +13,7 @@ public class StoryPiece {
 
     private String story;
     //TODO replace buttonEffects with a Gamestate
-    private String buttonEffects;
+    private ArrayList<String> buttonEffects;
     private ArrayList<String> buttons;
 
     /**
@@ -37,7 +37,7 @@ public class StoryPiece {
         return buttons;
     }
 
-    public String getButtonEffects() {
+    public ArrayList<String> getButtonEffects() {
         return buttonEffects;
     }
 }
