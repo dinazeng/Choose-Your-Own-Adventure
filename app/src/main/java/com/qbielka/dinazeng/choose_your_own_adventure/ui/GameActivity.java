@@ -28,12 +28,10 @@ public class GameActivity extends AppCompatActivity {
 
         storyModel = new StoryModel(1, getApplicationContext());
 
-        foo();
-    }
 
-    private void foo() {
         StoryPiece storyPiece = storyModel.getNextStory();
         setStory (storyPiece);
+        setupButtons(storyPiece);
     }
 
     public void setStory(StoryPiece storyPiece){
@@ -41,39 +39,78 @@ public class GameActivity extends AppCompatActivity {
         text.setText(storyPiece.getStory());
     }
 
-    public void setButtons (StoryPiece storyPiece){
+    public void setupButtons (StoryPiece storyPiece){
         button_1 = findViewById(R.id.game_option1);
         button_2 = findViewById(R.id.game_option2);
         button_3 = findViewById(R.id.game_option3);
         button_4 = findViewById(R.id.game_option4);
 
-        hideButtons();
+        setVisibilities(storyPiece);
+        setButtonTexts(storyPiece);
+
+        setOnClickListeners(button_1, 1);
+        setOnClickListeners(button_2, 2);
+        setOnClickListeners(button_3, 3);
+        setOnClickListeners(button_4, 4);
+
+    }
+
+    /**
+     * Sets the text of the buttons if the button exists
+     */
+    private void setButtonTexts(StoryPiece storyPiece) {
+        int size = storyPiece.getButtons().size();
+        // each if statement is independent from each other
+        if(isButtonNValid(1, storyPiece)) {
+            button_1.setText(storyPiece.getButtons().get(0));
+        }
+        if(isButtonNValid(2, storyPiece)) {
+            button_2.setText(storyPiece.getButtons().get(1));
+        }
+        if(isButtonNValid(3, storyPiece)) {
+            button_3.setText(storyPiece.getButtons().get(2));
+        }
+        if(isButtonNValid(4, storyPiece)) {
+            button_4.setText(storyPiece.getButtons().get(3));
+        }
+    }
+
+
+    /**
+     *
+     * @param buttonNum is the number of the button to be checked
+     * @return returns a boolean with the validity of the button.
+     */
+    private boolean isButtonNValid(int buttonNum, StoryPiece storyPiece) {
+        return storyPiece.getButtons().size() > buttonNum - 1;
+    }
+
+    private void setVisibilities(StoryPiece storyPiece) {
+
+        button_1.setVisibility(View.GONE);
+        button_2.setVisibility(View.GONE);
+        button_3.setVisibility(View.GONE);
+        button_4.setVisibility(View.GONE);
 
         ArrayList<String> buttonList = storyPiece.getButtons();
         for (int num = 0; num < buttonList.size(); num++){
             if (num == 0){
                 button_1.setVisibility(View.VISIBLE);
-                setOnClickListeners(button_1, 1);
             }
             if (num == 1){
                 button_2.setVisibility(View.VISIBLE);
-                setOnClickListeners(button_2, 2);
             }
             if (num == 2){
                 button_3.setVisibility(View.VISIBLE);
-                setOnClickListeners(button_3, 3);
             }
             if (num == 3){
                 button_4.setVisibility(View.VISIBLE);
-                setOnClickListeners(button_4, 4);
             }
         }
-
-
     }
 
-    private void setOnClickListeners(Button button_1, int i) {
-        button_1.setOnClickListener(new View.OnClickListener() {
+    private void setOnClickListeners(Button button, final int i) {
+        button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 storyModel.buttonNPushed(i);
@@ -82,15 +119,13 @@ public class GameActivity extends AppCompatActivity {
         });
     }
 
-    private void hideButtons() {
-        button_1.setVisibility(View.GONE);
-        button_2.setVisibility(View.GONE);
-        button_3.setVisibility(View.GONE);
-        button_4.setVisibility(View.GONE);
-    }
-
     private void updateUI(){
-        // todo
+        StoryPiece storyPiece = storyModel.getNextStory();
+
+        setStory(storyPiece);
+        setVisibilities(storyPiece);
+        setButtonTexts(storyPiece);
+
     }
 
 }
