@@ -84,7 +84,6 @@ public class GameActivity extends AppCompatActivity {
      * @return returns a boolean with the validity of the button.
      */
     private boolean isButtonNValid(int buttonNum, StoryPiece storyPiece) {
-        //TODO add in checks to the storyPiece's Button effects
         // If the button does not exist it is invalid
         if(!(storyPiece.getButtons().size() > buttonNum - 1)){
             return false;
