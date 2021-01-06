@@ -46,18 +46,28 @@ public class Button {
     //todo needs to change whenever GameState Does more than just ints
     public void setButtonEffects(String buttonEffects) {
         this.stringButtonEffects = buttonEffects;
+
+        // get the keyValuePair list of the button Effects
         ArrayList <String> buttonEffectsList = splitButtonEffects(buttonEffects);
         ArrayList <KeyValuePair> keyPairList = new ArrayList<>();
         for (int n = 0; n < buttonEffectsList.size(); n++){
             keyPairList.add(toPair(buttonEffectsList.get(n)));
         }
 
+
+        // if there are no button effects make a default gameState
+        if(keyPairList.size() == 0) {
+            gameStateButtonEffects = new GameState();
+        }
+
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append("{");
         for (KeyValuePair keyValuePair: keyPairList) {
-            //todo fix tempString (no string concatenation)
-            String tempString = "\"" + keyValuePair.getKey() + "\":" + keyValuePair.getValue() + ",";
-            stringBuilder.append(tempString);
+            stringBuilder.append("\"");
+            stringBuilder.append(keyValuePair.getKey());
+            stringBuilder.append("\":");
+            stringBuilder.append(keyValuePair.getValue());
+            stringBuilder.append(",");
         }
         stringBuilder.deleteCharAt(stringBuilder.length()-1);
         stringBuilder.append("}");
