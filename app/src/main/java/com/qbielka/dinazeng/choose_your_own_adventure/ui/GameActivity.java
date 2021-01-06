@@ -92,9 +92,9 @@ public class GameActivity extends AppCompatActivity {
         GameState change = storyPiece.getButtons().get(buttonNum - 1).getButtonEffects();
 
         // get gameState default from the Singleton
-        boolean valid  = GameState.isActionValid(change, Singleton.getInstance(this).gameState);
+        GameState origin = Singleton.getInstance(this).gameState;
 
-        return valid;
+        return GameState.isActionValid(change, origin);
     }
 
     private void setVisibilities(StoryPiece storyPiece) {
