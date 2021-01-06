@@ -41,6 +41,7 @@ public class Button {
         this.buttonEffects = buttonEffects;
     }
 
+    //todo needs to change whenever GameState Does more than just ints
     public void setButtonEffects(String buttonEffects) {
         ArrayList <String> buttonEffectsList = splitButtonEffects(buttonEffects);
         ArrayList <KeyValuePair> keyPairList = new ArrayList<>();

@@ -15,6 +15,8 @@ public class GameState {
         this.currentDatabaseStoryKey = currentDatabaseStoryKey;
     }
 
+    //todo needs to change whenever Button Does more than just ints
+
     // Fields that change from game to game
     private int grass;
     private int twigs;
