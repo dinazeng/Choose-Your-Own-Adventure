@@ -126,7 +126,7 @@ public class GameActivity extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                storyModel.buttonNPushed(i);
+                storyModel.buttonNPushed(i,getApplicationContext());
                 updateUI();
             }
         });
