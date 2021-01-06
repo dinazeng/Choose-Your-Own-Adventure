@@ -24,4 +24,16 @@ public class KeyValuePair {
     public void setKey(String key) {
         this.key = key;
     }
+
+    /**
+     *
+     * @return returns a json string for this key value pair
+     */
+    public String toJSONString(){
+
+        return "\"" +
+                getKey() +
+                "\":" +
+                getValue();
+    }
 }

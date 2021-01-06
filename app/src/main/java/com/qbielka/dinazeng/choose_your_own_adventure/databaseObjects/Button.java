@@ -67,10 +67,7 @@ public class Button {
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append("{");
         for (KeyValuePair keyValuePair: keyPairList) {
-            stringBuilder.append("\"");
-            stringBuilder.append(keyValuePair.getKey());
-            stringBuilder.append("\":");
-            stringBuilder.append(keyValuePair.getValue());
+            stringBuilder.append(keyValuePair.toJSONString());
             stringBuilder.append(",");
         }
         stringBuilder.deleteCharAt(stringBuilder.length()-1);
