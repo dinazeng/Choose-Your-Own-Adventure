@@ -1,7 +1,5 @@
 package com.qbielka.dinazeng.choose_your_own_adventure.databaseObjects;
 
-import android.util.Log;
-
 import com.google.gson.Gson;
 import com.qbielka.dinazeng.choose_your_own_adventure.model.GameState;
 import com.qbielka.dinazeng.choose_your_own_adventure.model.KeyValuePair;
@@ -77,8 +75,6 @@ public class Button {
         stringBuilder.append("}");
 
         Gson gson = new Gson ();
-        Log.w("BKA1", keyPairList.size()+"");
-        Log.w("BKA", stringBuilder.toString());
         this.gameStateButtonEffects = gson.fromJson(stringBuilder.toString(), GameState.class);
     }
 
@@ -132,5 +128,10 @@ public class Button {
         }catch (Exception e){
             return null;
         }
+    }
+
+
+    public String toString(){
+        return "ButtonText: "+buttonText+", ButtonEffects: "+stringButtonEffects;
     }
 }
