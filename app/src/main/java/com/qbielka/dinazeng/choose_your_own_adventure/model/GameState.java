@@ -23,6 +23,28 @@ public class GameState {
     private int flint;
     private int time;
 
+
+    public static boolean isActionValid(GameState g1, GameState g2){
+        GameState toCheck = GameStateAddition(g1, g2);
+
+        boolean isTwigs = toCheck.twigs >= 0;
+        boolean isGrass = toCheck.grass >= 0;
+        boolean isTime = toCheck.time >= 0;
+        boolean isFlint = toCheck.flint >= 0;
+
+        return isFlint && isTime && isGrass && isTwigs;
+    }
+
+    public static GameState GameStateAddition(GameState g1, GameState g2){
+        GameState newGameState = new GameState();
+        newGameState.setTwigs(g1.twigs + g1.twigs);
+        newGameState.setFlint(g1.flint + g2.flint);
+        newGameState.setTime(g1.time + g2.time);
+        newGameState.setGrass(g1.grass + g2.grass);
+
+        return newGameState;
+    }
+
     public int getGrass() {
         return grass;
     }
