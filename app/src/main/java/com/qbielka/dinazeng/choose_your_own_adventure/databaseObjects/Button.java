@@ -51,7 +51,11 @@ public class Button {
         ArrayList <String> buttonEffectsList = splitButtonEffects(buttonEffects);
         ArrayList <KeyValuePair> keyPairList = new ArrayList<>();
         for (int n = 0; n < buttonEffectsList.size(); n++){
-            keyPairList.add(toPair(buttonEffectsList.get(n)));
+            // do a nullcheck for invalid pairs
+            KeyValuePair pair = toPair(buttonEffectsList.get(n));
+            if(pair != null) {
+                keyPairList.add(pair);
+            }
         }
 
 
@@ -93,31 +97,38 @@ public class Button {
         return buttonEffects;
     }
 
+    /**
+     *
+     * @param buttonEffect the string that should be input from the csv + or - followed by a number followed by a variable name
+     * @return null if the string was not properly formatted or a KeyValuePair for use in making JSON object later
+     */
     public KeyValuePair toPair (String buttonEffect){
-        //finds the operator of the button effect
-        int operator;
-        if (buttonEffect.charAt(0) == '+'){
-            operator = 1;
-        }
-        else if (buttonEffect.charAt(0) == '-'){
-            operator = -1;
-        }
-        else {
-            operator = 0;
-        }
-
-        //finds the integer value of button effect
-        StringBuilder counter = new StringBuilder();
-        for (int n = 1; n < buttonEffect.length(); n++){
-            if (buttonEffect.charAt(n) >= '0' && buttonEffect.charAt(n) <= '9'){
-               counter.append(buttonEffect.charAt(n));
+        try {
+            //finds the operator of the button effect
+            int operator;
+            if (buttonEffect.charAt(0) == '+') {
+                operator = 1;
+            } else if (buttonEffect.charAt(0) == '-') {
+                operator = -1;
+            } else {
+                operator = 0;
             }
+
+            //finds the integer value of button effect
+            StringBuilder counter = new StringBuilder();
+            for (int n = 1; n < buttonEffect.length(); n++) {
+                if (buttonEffect.charAt(n) >= '0' && buttonEffect.charAt(n) <= '9') {
+                    counter.append(buttonEffect.charAt(n));
+                }
+            }
+            int value = Integer.parseInt(counter.toString()) * operator;
+
+            //finds the string of the button effect
+            String remainder = buttonEffect.substring(counter.length() + 1);
+
+            return new KeyValuePair(value, remainder);
+        }catch (Exception e){
+            return null;
         }
-        int value = Integer.parseInt(counter.toString()) * operator;
-
-        //finds the string of the button effect
-        String remainder = buttonEffect.substring(counter.length() + 1);
-
-        return new KeyValuePair(value, remainder);
     }
 }
