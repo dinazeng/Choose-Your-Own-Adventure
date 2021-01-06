@@ -48,7 +48,7 @@ public class LauncherActivity extends AppCompatActivity {
 
                 // Singleton saves the starting state for the Game to use.
                 Singleton.getInstance(this).gameState.setCurrentDatabaseStoryKey(1);
-                Singleton.SaveGame(this);
+                Singleton.saveGame(this);
             }
             startActivity(intent);
         } catch (IOException e){

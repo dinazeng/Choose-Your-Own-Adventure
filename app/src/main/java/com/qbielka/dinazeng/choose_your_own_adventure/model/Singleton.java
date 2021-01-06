@@ -37,7 +37,7 @@ public class Singleton {
 
     }
 
-    public static void SaveGame(Context appContext){
+    public static void saveGame(Context appContext){
         // get save data from the current game
         String saveFile = gson.toJson(getInstance(appContext).gameState);
 

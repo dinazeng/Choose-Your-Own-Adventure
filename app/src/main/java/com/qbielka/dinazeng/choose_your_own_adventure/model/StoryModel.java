@@ -29,6 +29,7 @@ public class StoryModel {
         GameState change = thisStory.getButtonArr().get(num).getButtonEffects();
 
         Singleton.getInstance(context).gameState = GameState.GameStateAddition(origin, change);
+        Singleton.saveGame(context);
 
         // change the unit of story we are on
         int nextKey =  thisStory.getButtonArr().get(num).getButtonKey();
