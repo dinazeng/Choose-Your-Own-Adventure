@@ -23,10 +23,15 @@ public class GameState {
     private int flint;
     private int time;
 
+    public GameState(){
+        grass = 0;
+        twigs = 0;
+        flint = 0;
+        time = 0;
+    }
 
     public static boolean isActionValid(GameState g1, GameState g2){
         GameState toCheck = GameStateAddition(g1, g2);
-
         boolean isTwigs = toCheck.twigs >= 0;
         boolean isGrass = toCheck.grass >= 0;
         boolean isTime = toCheck.time >= 0;
@@ -75,5 +80,9 @@ public class GameState {
 
     public void setTime(int time) {
         this.time = time;
+    }
+
+    public String toString(){
+        return "grass: "+grass+", twigs: "+twigs+", time: "+time+", flint: "+flint;
     }
 }
