@@ -3,6 +3,7 @@ package com.qbielka.dinazeng.choose_your_own_adventure.ui;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -27,7 +28,6 @@ public class GameActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
-
         storyModel = new StoryModel(1, getApplicationContext());
 
 
@@ -61,7 +61,7 @@ public class GameActivity extends AppCompatActivity {
      * Sets the text of the buttons if the button exists
      */
     private void setButtonTexts(StoryPiece storyPiece) {
-        int size = storyPiece.getButtons().size();
+
         // each if statement is independent from each other
         if(isButtonNValid(1, storyPiece)) {
             button_1.setText(storyPiece.getButtons().get(0).getButtonText());
@@ -88,13 +88,15 @@ public class GameActivity extends AppCompatActivity {
         if(!(storyPiece.getButtons().size() > buttonNum - 1)){
             return false;
         }
-        // get gameState change from the button that is being checked
-        GameState change = storyPiece.getButtons().get(buttonNum - 1).getButtonEffects();
-
-        // get gameState default from the Singleton
-        GameState origin = Singleton.getInstance(this).gameState;
-
-        return GameState.isActionValid(change, origin);
+        return true;
+//        // get gameState change from the button that is being checked
+//        GameState change = storyPiece.getButtons().get(buttonNum - 1).getButtonEffects();
+//
+//        // get gameState default from the Singleton
+//        GameState origin = Singleton.getInstance(this).gameState;
+//
+//
+//        return GameState.isActionValid(change, origin);
     }
 
     private void setVisibilities(StoryPiece storyPiece) {
@@ -107,16 +109,16 @@ public class GameActivity extends AppCompatActivity {
         ArrayList<com.qbielka.dinazeng.choose_your_own_adventure.databaseObjects.Button> buttonList
                 = storyPiece.getButtons();
         for (int num = 0; num < buttonList.size(); num++){
-            if (num == 0){
+            if (isButtonNValid(1, storyPiece)){
                 button_1.setVisibility(View.VISIBLE);
             }
-            if (num == 1){
+            if (isButtonNValid(2, storyPiece)){
                 button_2.setVisibility(View.VISIBLE);
             }
-            if (num == 2){
+            if (isButtonNValid(3, storyPiece)){
                 button_3.setVisibility(View.VISIBLE);
             }
-            if (num == 3){
+            if (isButtonNValid(4, storyPiece)){
                 button_4.setVisibility(View.VISIBLE);
             }
         }
@@ -128,6 +130,8 @@ public class GameActivity extends AppCompatActivity {
             public void onClick(View v) {
                 storyModel.buttonNPushed(i,getApplicationContext());
                 updateUI();
+                Log.w("THING",Singleton.getInstance(getApplicationContext()).gameState.toString());
+                Log.w("THING",storyModel.getNextStory().getButtons().toString());
             }
         });
     }
