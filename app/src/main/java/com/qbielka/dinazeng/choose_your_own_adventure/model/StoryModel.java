@@ -16,10 +16,24 @@ public class StoryModel {
         thisStory = db.getStory(key);
     }
 
-    public void buttonNPushed(int num){
+    /**
+     * This takes in the number of the button that was pushed and triggers its effect
+     * @param num the number of the button that was pushed starting at 1
+     */
+    public void buttonNPushed(int num, Context context){
+        // Buttons start numbered at 1 however the array starts them at 0
+        num = num -1;
+
+        // Change the gameState with new effects
+        GameState origin = Singleton.getInstance(context).gameState;
+        GameState change = thisStory.getButtonArr().get(num).getButtonEffects();
+
+        Singleton.getInstance(context).gameState = GameState.GameStateAddition(origin, change);
+        Singleton.saveGame(context);
+
+        // change the unit of story we are on
         int nextKey =  thisStory.getButtonArr().get(num).getButtonKey();
         thisStory = db.getStory(nextKey);
-        getNextStory();
     }
 
     /**

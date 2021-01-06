@@ -114,7 +114,7 @@ public class StoryDatabaseHelper extends SQLiteOpenHelper {
         for (Button button: storyLine.getButtonArr()) {
             buttonRow.put(BUTTON_KEY, button.getButtonKey());
             buttonRow.put(BUTTON_TEXT, button.getButtonText());
-            buttonRow.put(BUTTON_EFFECT, button.getButtonEffects());
+            buttonRow.put(BUTTON_EFFECT, button.getStringButtonEffects());
             buttonRow.put(BUTTON_STORY_ID, storyLine.getId());
             db.insert(BUTTON_TABLE, null, buttonRow);
         }
