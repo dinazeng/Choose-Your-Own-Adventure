@@ -13,8 +13,7 @@ public class StoryPiece {
 
     private String story;
     //TODO replace buttonEffects with a Gamestate
-    private ArrayList<String> buttonEffects;
-    private ArrayList<String> buttons;
+    private ArrayList<Button> buttons;
 
     /**
      * This is the constructor for StoryPiece it required
@@ -23,9 +22,7 @@ public class StoryPiece {
     public StoryPiece(Story story){
         this.story = story.getStory();
         this.buttons = new ArrayList<>();
-        for (Button button: story.getButtonArr()){
-            this.buttons.add(button.getButtonText());
-        }
+        this.buttons.addAll(story.getButtonArr());
     }
 
 
@@ -33,11 +30,8 @@ public class StoryPiece {
         return story;
     }
 
-    public ArrayList<String> getButtons() {
+    public ArrayList<Button> getButtons() {
         return buttons;
     }
 
-    public ArrayList<String> getButtonEffects() {
-        return buttonEffects;
-    }
 }
