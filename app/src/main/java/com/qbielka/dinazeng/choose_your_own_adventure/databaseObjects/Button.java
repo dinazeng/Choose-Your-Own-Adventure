@@ -8,8 +8,9 @@ import java.util.ArrayList;
 
 public class Button {
     int buttonKey;
-    GameState buttonEffects;
+    GameState gameStateButtonEffects;
     String buttonText;
+    String stringButtonEffects;
 
     public Button(int buttonKey, String buttonText, String buttonEffects) {
         setButtonKey(buttonKey);
@@ -34,15 +35,17 @@ public class Button {
     }
 
     public GameState getButtonEffects() {
-        return buttonEffects;
+        return gameStateButtonEffects;
     }
 
-    public void setButtonEffects(GameState buttonEffects) {
-        this.buttonEffects = buttonEffects;
+    public String getStringButtonEffects() {
+        return stringButtonEffects;
     }
+
 
     //todo needs to change whenever GameState Does more than just ints
     public void setButtonEffects(String buttonEffects) {
+        this.stringButtonEffects = buttonEffects;
         ArrayList <String> buttonEffectsList = splitButtonEffects(buttonEffects);
         ArrayList <KeyValuePair> keyPairList = new ArrayList<>();
         for (int n = 0; n < buttonEffectsList.size(); n++){
@@ -60,7 +63,7 @@ public class Button {
         stringBuilder.append("}");
 
         Gson gson = new Gson ();
-        this.buttonEffects = gson.fromJson(stringBuilder.toString(), GameState.class);
+        this.gameStateButtonEffects = gson.fromJson(stringBuilder.toString(), GameState.class);
     }
 
     public static ArrayList<String> splitButtonEffects (String buttonEffectList){
