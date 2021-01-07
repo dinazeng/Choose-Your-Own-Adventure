@@ -88,15 +88,14 @@ public class GameActivity extends AppCompatActivity {
         if(!(storyPiece.getButtons().size() > buttonNum - 1)){
             return false;
         }
-        return true;
-//        // get gameState change from the button that is being checked
-//        GameState change = storyPiece.getButtons().get(buttonNum - 1).getButtonEffects();
-//
-//        // get gameState default from the Singleton
-//        GameState origin = Singleton.getInstance(this).gameState;
-//
-//
-//        return GameState.isActionValid(change, origin);
+        // get gameState change from the button that is being checked
+        GameState change = storyPiece.getButtons().get(buttonNum - 1).getButtonEffects();
+
+        // get gameState default from the Singleton
+        GameState origin = Singleton.getInstance(this).gameState;
+
+
+        return GameState.isActionValid(change, origin);
     }
 
     private void setVisibilities(StoryPiece storyPiece) {

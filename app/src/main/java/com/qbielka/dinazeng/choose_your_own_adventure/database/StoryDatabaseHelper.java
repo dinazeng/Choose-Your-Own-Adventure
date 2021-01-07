@@ -88,8 +88,10 @@ public class StoryDatabaseHelper extends SQLiteOpenHelper {
         buttonArr.add(new Button (buttonKey, buttonText,buttonEffects));
 
         // Add buttons to the story
+        int numTimes = 0;
         while (buttonResult.moveToNext()) {
             buttonText = buttonResult.getString(buttonResult.getColumnIndex(BUTTON_TEXT));
+            buttonEffects = buttonResult.getString(buttonResult.getColumnIndex(BUTTON_EFFECT));
             buttonKey = buttonResult.getInt(buttonResult.getColumnIndex(BUTTON_KEY));
             buttonArr.add(new Button(buttonKey, buttonText, buttonEffects));
         }

@@ -7,7 +7,7 @@ android {
     buildToolsVersion "30.0.2"
 
     defaultConfig {
-        applicationId "com.example.choose_your_own_adventure"
+        applicationId "com.qbielka.dinazeng.choose_your_own_adventure"
         minSdkVersion 16
         targetSdkVersion 30
         versionCode 1
