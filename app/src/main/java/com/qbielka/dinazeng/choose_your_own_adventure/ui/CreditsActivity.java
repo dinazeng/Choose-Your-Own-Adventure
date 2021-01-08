@@ -1,16 +1,31 @@
 package com.qbielka.dinazeng.choose_your_own_adventure.ui;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.qbielka.dinazeng.choose_your_own_adventure.R;
 
 public class CreditsActivity extends AppCompatActivity {
 
+    RecyclerView recyclerView;
+    RecyclerView.Adapter recyclerAdapter;
+    RecyclerView.LayoutManager layoutManager;
+    String [] name = {"Quince Bielka", "Dina Zeng", "WriterNameHere", "John Wu", "Jaclyn Canlas"};
+    String [] job = {"Lead Developer","Developer","Author","CSSS Frosh Chair", "Engineering Gamer Girl"};
+    int [] images = {R.drawable.p1, R.drawable.p2, R.drawable.p3, R.drawable.p4, R.drawable.p5};
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_credits);
+        recyclerView = findViewById(R.id.rv);
+        recyclerView.setHasFixedSize(true);
+        layoutManager = new LinearLayoutManager(this);
+        recyclerView.setLayoutManager(layoutManager);
+        recyclerAdapter = new programAdapter(this, name, job, images);
+        recyclerView.setAdapter(recyclerAdapter);
     }
 }
