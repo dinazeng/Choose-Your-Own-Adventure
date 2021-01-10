@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.qbielka.dinazeng.choose_your_own_adventure.R;
+import com.qbielka.dinazeng.choose_your_own_adventure.model.Singleton;
 import com.qbielka.dinazeng.choose_your_own_adventure.model.StoryModel;
 import com.qbielka.dinazeng.choose_your_own_adventure.model.StoryPiece;
 
@@ -28,7 +29,7 @@ public class GameActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
-        storyModel = new StoryModel(1, getApplicationContext());
+        storyModel = new StoryModel(Singleton.getInstance(this).gameState.getCurrentDatabaseStoryKey(), this);
 
 
 
@@ -46,7 +47,7 @@ public class GameActivity extends AppCompatActivity {
         TextView text = findViewById(R.id.game_story);
         text.setText(storyPiece.getStory());
 
-        recyclerAdapter = new storyAdapter(this, storyPiece.getButtons());
+        recyclerAdapter = new storyAdapter(this, storyPiece.getButtons(), storyModel);
         recyclerView.setAdapter(recyclerAdapter);
 
     }
