@@ -1,4 +1,4 @@
-package com.qbielka.dinazeng.choose_your_own_adventure.ui;
+package com.qbielka.dinazeng.choose_your_own_adventure.RecyclerViewAdapeters;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.qbielka.dinazeng.choose_your_own_adventure.R;
 
-public class programAdapter extends RecyclerView.Adapter<programAdapter.ViewHolder> {
+public class CreditsAdapter extends RecyclerView.Adapter<CreditsAdapter.ViewHolder> {
 
     Context context;
     String [] names;
@@ -32,7 +32,7 @@ public class programAdapter extends RecyclerView.Adapter<programAdapter.ViewHold
         }
     }
 
-    public programAdapter(Context context, String[] names, String[] jobs, int[] images) {
+    public CreditsAdapter(Context context, String[] names, String[] jobs, int[] images) {
         this.context = context;
         this.names = names;
         this.jobs = jobs;
@@ -41,15 +41,14 @@ public class programAdapter extends RecyclerView.Adapter<programAdapter.ViewHold
 
     @NonNull
     @Override
-    public programAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public CreditsAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater layoutInflater = LayoutInflater.from(context);
         View view = layoutInflater.inflate(R.layout.credits_resource,parent, false);
-        ViewHolder viewHolder = new ViewHolder (view);
-        return viewHolder;
+        return new ViewHolder (view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull programAdapter.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull CreditsAdapter.ViewHolder holder, int position) {
         holder.rowName.setText(names[position]);
         holder.rowJob.setText(jobs[position]);
         holder.rowImage.setImageResource(images[position]);

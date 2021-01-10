@@ -1,23 +1,27 @@
-package com.qbielka.dinazeng.choose_your_own_adventure.ui;
+package com.qbielka.dinazeng.choose_your_own_adventure.RecyclerViewAdapeters;
 
-import android.content.Context;
+import android.app.Activity;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.qbielka.dinazeng.choose_your_own_adventure.R;
+import com.qbielka.dinazeng.choose_your_own_adventure.model.StoryModel;
+import com.qbielka.dinazeng.choose_your_own_adventure.ui.GameActivity;
 
 import java.util.ArrayList;
 
-public class storyAdapter extends RecyclerView.Adapter<storyAdapter.ViewHolder> {
+public class StoryAdapter extends RecyclerView.Adapter<StoryAdapter.ViewHolder> {
 
-    Context context;
+    Activity context;
     ArrayList<com.qbielka.dinazeng.choose_your_own_adventure.databaseObjects.Button> buttons;
+    StoryModel model;
+    GameActivity g;
 
     public static class ViewHolder extends RecyclerView.ViewHolder{
         Button button;
@@ -28,14 +32,15 @@ public class storyAdapter extends RecyclerView.Adapter<storyAdapter.ViewHolder> 
         }
     }
 
-    public storyAdapter(Context context, ArrayList<com.qbielka.dinazeng.choose_your_own_adventure.databaseObjects.Button> text) {
+    public StoryAdapter(Activity context, ArrayList<com.qbielka.dinazeng.choose_your_own_adventure.databaseObjects.Button> text, StoryModel model) {
         this.context = context;
         this.buttons = text;
+        this.model = model;
     }
 
     @NonNull
     @Override
-    public storyAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public StoryAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater layoutInflater = LayoutInflater.from(context);
         View view = layoutInflater.inflate(R.layout.game_buttons, parent, false);
 
@@ -48,7 +53,13 @@ public class storyAdapter extends RecyclerView.Adapter<storyAdapter.ViewHolder> 
         holder.button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //TODO
+                model.buttonNPushed(position, context);
+
+                Intent nextStage = new Intent(context, GameActivity.class);
+                context.finish();
+                context.startActivity(nextStage);
+
+
             }
         });
     }

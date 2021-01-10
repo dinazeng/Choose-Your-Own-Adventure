@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.qbielka.dinazeng.choose_your_own_adventure.R;
+import com.qbielka.dinazeng.choose_your_own_adventure.RecyclerViewAdapeters.CreditsAdapter;
 
 public class CreditsActivity extends AppCompatActivity {
 
@@ -25,7 +26,7 @@ public class CreditsActivity extends AppCompatActivity {
         recyclerView.setHasFixedSize(true);
         layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
-        recyclerAdapter = new programAdapter(this, name, job, images);
+        recyclerAdapter = new CreditsAdapter(this, name, job, images);
         recyclerView.setAdapter(recyclerAdapter);
     }
 }

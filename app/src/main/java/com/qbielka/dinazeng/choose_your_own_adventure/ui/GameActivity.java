@@ -8,11 +8,10 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.qbielka.dinazeng.choose_your_own_adventure.R;
+import com.qbielka.dinazeng.choose_your_own_adventure.RecyclerViewAdapeters.StoryAdapter;
 import com.qbielka.dinazeng.choose_your_own_adventure.model.Singleton;
 import com.qbielka.dinazeng.choose_your_own_adventure.model.StoryModel;
 import com.qbielka.dinazeng.choose_your_own_adventure.model.StoryPiece;
-
-import java.util.ArrayList;
 
 public class GameActivity extends AppCompatActivity {
 
@@ -29,7 +28,8 @@ public class GameActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
-        storyModel = new StoryModel(Singleton.getInstance(this).gameState.getCurrentDatabaseStoryKey(), this);
+        int key = Singleton.getInstance(this).gameState.getCurrentDatabaseStoryKey();
+        storyModel = new StoryModel(key, this);
 
 
 
@@ -47,11 +47,11 @@ public class GameActivity extends AppCompatActivity {
         TextView text = findViewById(R.id.game_story);
         text.setText(storyPiece.getStory());
 
-        recyclerAdapter = new storyAdapter(this, storyPiece.getButtons(), storyModel);
+        recyclerAdapter = new StoryAdapter(this, storyPiece.getButtons(), storyModel);
         recyclerView.setAdapter(recyclerAdapter);
 
     }
-
+//todo remove these comments
 //    public void setupButtons (StoryPiece storyPiece){
 //        button_1 = findViewById(R.id.game_option1);
 //        button_2 = findViewById(R.id.game_option2);
