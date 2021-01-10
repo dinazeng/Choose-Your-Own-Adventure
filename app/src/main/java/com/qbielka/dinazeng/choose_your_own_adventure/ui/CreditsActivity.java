@@ -13,8 +13,8 @@ public class CreditsActivity extends AppCompatActivity {
     RecyclerView recyclerView;
     RecyclerView.Adapter recyclerAdapter;
     RecyclerView.LayoutManager layoutManager;
-    String [] name = {"Quince Bielka", "Dina Zeng", "WriterNameHere", "John Wu", "Jaclyn Canlas"};
-    String [] job = {"Lead Developer","Developer","Author","CSSS Frosh Chair", "Engineering Gamer Girl"};
+    String [] name = {"Quince Bielka", "Dina Zeng", "WriterNameHere"};
+    String [] job = {"Lead Developer","Developer","Author"};
     int [] images = {R.drawable.p1, R.drawable.p2, R.drawable.p3, R.drawable.p4, R.drawable.p5};
 
     @Override
