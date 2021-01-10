@@ -20,7 +20,6 @@ public class GameActivity extends AppCompatActivity {
     RecyclerView recyclerView;
     RecyclerView.Adapter recyclerAdapter;
     RecyclerView.LayoutManager layoutManager;
-    ArrayList<String> textArr = new ArrayList<>();
 //    Button button_1;
 //    Button button_2;
 //    Button button_3;
@@ -31,25 +30,25 @@ public class GameActivity extends AppCompatActivity {
         setContentView(R.layout.activity_game);
         storyModel = new StoryModel(1, getApplicationContext());
 
-        StoryPiece storyPiece = storyModel.getNextStory();
-        setStory (storyPiece);
+
 
         recyclerView = findViewById(R.id.rvButton);
         recyclerView.setHasFixedSize(true);
         layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
-        recyclerAdapter = new storyAdapter(this,textArr);
-        recyclerView.setAdapter(recyclerAdapter);
         //setupButtons(storyPiece);
+
+        StoryPiece storyPiece = storyModel.getNextStory();
+        setStory (storyPiece);
     }
 
     public void setStory(StoryPiece storyPiece){
         TextView text = findViewById(R.id.game_story);
         text.setText(storyPiece.getStory());
 
-        for (int n = 0; n < storyPiece.getButtons().size(); n++){
-            textArr.add(storyPiece.getButtons().get(n).getButtonText());
-        }
+        recyclerAdapter = new storyAdapter(this, storyPiece.getButtons());
+        recyclerView.setAdapter(recyclerAdapter);
+
     }
 
 //    public void setupButtons (StoryPiece storyPiece){

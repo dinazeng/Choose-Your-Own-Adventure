@@ -4,7 +4,8 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
+import android.widget.Button;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -16,38 +17,44 @@ import java.util.ArrayList;
 public class storyAdapter extends RecyclerView.Adapter<storyAdapter.ViewHolder> {
 
     Context context;
-    ArrayList<String> text;
+    ArrayList<com.qbielka.dinazeng.choose_your_own_adventure.databaseObjects.Button> buttons;
 
     public static class ViewHolder extends RecyclerView.ViewHolder{
-        TextView rowText;
+        Button button;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            rowText = itemView.findViewById(R.id.button_view);
+            button = itemView.findViewById(R.id.button);
         }
     }
 
-    public storyAdapter(Context context, ArrayList<String> text) {
+    public storyAdapter(Context context, ArrayList<com.qbielka.dinazeng.choose_your_own_adventure.databaseObjects.Button> text) {
         this.context = context;
-        this.text = text;
+        this.buttons = text;
     }
 
     @NonNull
     @Override
     public storyAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater layoutInflater = LayoutInflater.from(context);
-        View view = layoutInflater.inflate(R.layout.game_buttons,parent, false);
-        ViewHolder viewHolder = new ViewHolder (view);
-        return viewHolder;
+        View view = layoutInflater.inflate(R.layout.game_buttons, parent, false);
+
+        return new ViewHolder (view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        holder.rowText.setText(text.get(position));
+        holder.button.setText(buttons.get(position).getButtonText());
+        holder.button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //TODO
+            }
+        });
     }
 
     @Override
     public int getItemCount() {
-        return text.size();
+        return buttons.size();
     }
 }
